@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>百度瀑布流</title>
+  </head>
+  <body>
+    <div class="col-flex">
+      <div class="item">
+        <a href="#"><img src="./img/1.webp" alt="" /></a>
+        <a href="#"><img src="./img/c2.webp" alt="" /></a>
+        <a href="#"><img src="./img/3.webp" alt="" /></a>
+        <a href="#"><img src="./img/c4.webp" alt="" /></a>
+        <a href="#"><img src="./img/18.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href="#"><img src="./img/c4.webp" alt="" /></a>
+        <a href="#"><img src="./img/c6.webp" alt="" /></a>
+        <a href="#"><img src="./img/4.webp" alt="" /></a>
+        <a href="#"><img src="./img/c8.webp" alt="" /></a>
+        <a href="#"><img src="./img/6.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href="#"><img src="./img/15.webp" alt="" /></a>
+        <a href="#"><img src="./img/14.webp" alt="" /></a>
+        <a href="#"><img src="./img/5.webp" alt="" /></a>
+        <a href="#"><img src="./img/c6.webp" alt="" /></a>
+        <a href="#"><img src="./img/7.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href="#"><img src="./img/c7.webp" alt="" /></a>
+        <a href="#"><img src="./img/c8.webp" alt="" /></a>
+        <a href="#"><img src="./img/6.webp" alt="" /></a>
+        <a href="#"><img src="./img/c1.webp" alt="" /></a>
+        <a href="#"><img src="./img/8.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href="#"><img src="./img/17.webp" alt="" /></a>
+        <a href="#"><img src="./img/c1.webp" alt="" /></a>
+        <a href="#"><img src="./img/7.webp" alt="" /></a>
+        <a href="#"><img src="./img/c8.webp" alt="" /></a>
+        <a href="#"><img src="./img/9.webp" alt="" /></a>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .col-flex {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    gap: 16px;
+  }
+
+  .col-flex .item {
+    /*padding: 10px;*/
+    flex: 1;
+  }
+
+  .col-flex .item a {
+    overflow: hidden;
+    border-radius: 18px;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .col-flex .item a img {
+    width: 100%;
+    display: block;
+  }
+</style>

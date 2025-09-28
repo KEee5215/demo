@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      伪元素选择器用于创建不存在于文档树中的虚拟元素，常用的伪元素选择器有::before和::after。它们允许我们在元素的内容之前或之后插入内容，从而实现更复杂的样式效果。
+      1. ::before和::after
+      ::before和::after是两个伪元素选择器，它们可以在元素的内容之前或之后插入内容。
+      例如，我们可以使用::before伪元素选择器在元素的内容之前插入一个红色的方块：
+    </p>
+    <textarea name="" id="" placeholder="请输入内容"></textarea>
+    <div class="box">pink</div>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  p::first-line {
+    color: red;
+    font-weight: bold;
+  }
+  p::first-letter {
+    color: rgb(104, 43, 162);
+    font-weight: bold;
+  }
+  textarea::placeholder {
+    color: red;
+    font-weight: bold;
+  }
+  .box::before {
+    content: "我是";
+    color: red;
+  }
+  .box::after {
+    content: "老师";
+    color: blue;
+  }
+</style>

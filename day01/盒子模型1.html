@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>边框</title>
+  </head>
+  <body>
+    <div class="box1">内容</div>
+    <div class="box2">内容</div>
+    <div class="box3">内容</div>
+    <div class="box4">内容</div>
+  </body>
+</html>
+<style>
+  div[class^="box"] {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+  }
+
+  .box1 {
+    border: 2px solid red;
+  }
+  .box2 {
+    border: 2px dashed green;
+    border-radius: 10px;
+  }
+  .box3 {
+    border: 2px dotted blue;
+  }
+  .box4 {
+    border: 2px solid #000;
+    border-top: 4px solid orange;
+  }
+</style>

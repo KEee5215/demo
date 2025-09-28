@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./font_4u28buajn4k/iconfont.css" />
+    <title>改变主轴方向</title>
+  </head>
+  <body>
+    <ul class="sanlian">
+      <li>
+        <a href="#">
+          <i class="iconfont icon-xihuan"></i>
+          <p>点赞</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="iconfont icon-gerenzhongxin-zhihui"></i>
+          <p>硬币</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="iconfont icon-kandian-zhihui"></i>
+          <p>收藏</p>
+        </a>
+      </li>
+    </ul>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  ul {
+    list-style: none;
+    margin: 10px;
+    display: flex;
+    flex-direction: row; /* 主轴方向改为水平方向 */
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  .iconfont {
+    font-size: 20px;
+  }
+
+  li {
+    width: 40px;
+    height: 60px;
+  }
+  li a {
+    display: flex;
+    flex-direction: column; /* 主轴方向改为垂直方向 */
+    justify-content: center; /* 垂直方向居中对齐 */
+    align-items: center; /* 水平方向居中对齐 */
+    height: 100%;
+  }
+</style>

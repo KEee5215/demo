@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex弹性布局</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+    </div>
+  </body>
+</html>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .container {
+    width: 80%;
+    background-color: pink;
+    border: red solid 2px;
+    display: flex;
+    margin: 0 auto;
+  }
+
+  .box {
+    /* flex:1 表示 一份*/
+    flex: 1;
+    width: 80px;
+    height: 100px;
+    background-color: yellow;
+    border: 1px solid black;
+  }
+  .box:nth-child(2n) {
+    background-color: green;
+  }
+</style>

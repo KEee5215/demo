@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">第一个盒子</div>
+      <div class="box">第二个盒子</div>
+      <div class="box">第三个盒子</div>
+      <div class="box">第四个盒子</div>
+      <div class="box">第五个盒子</div>
+      <div class="box">第六个盒子</div>
+    </div>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .container {
+    width: 590px;
+    height: 500px;
+    background-color: pink;
+    margin: 20px auto;
+  }
+  .box {
+    width: 190px;
+    height: 200px;
+    background-color: skyblue;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .box:nth-child(3n) {
+    margin-right: 0;
+  }
+</style>

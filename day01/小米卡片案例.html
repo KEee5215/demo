@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>小米卡片</title>
+  </head>
+  <body>
+    <div class="card">
+      <img
+        src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202509222138_488a3091be5bacbc236496b17f025f97.png?thumb=1&w=250&h=250&f=webp&q=90"
+        alt="Xiaomi 17 Pro Max"
+      />
+
+      <h3 class="title">Xiaomi 17 Pro Max</h3>
+      <p class="desc">
+        徕卡光影大师 移动影像系统｜徕卡 5X 超聚光潜望长焦｜妙享背屏｜第五代 骁龙
+        8 至尊版移动平台｜7500mAh 小米金沙江电池｜低功耗超级阳光屏 「超级像素」
+      </p>
+      <p class="price"><span>5999</span>元<span>起</span><del>6999元</del></p>
+    </div>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(234, 234, 234);
+  }
+
+  .card {
+    margin: 100px auto;
+    width: 234px;
+    height: 300px;
+    background-color: #fff;
+    padding: 20px 0;
+    transition: all 0.3s;
+  }
+
+  .card img {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .card .title {
+    margin: 0 10px 2px;
+    text-align: center;
+    font: 14px / 1.5 Helvetica Neue, Helvetica, Arial, Microsoft Yahei,
+      Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+  }
+
+  .card .desc {
+    margin: 0 10px 10px;
+    text-align: center;
+    font: 12px / 1.5 Helvetica Neue, Helvetica, Arial, Microsoft Yahei,
+      Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+    color: #999;
+    /*单行文本溢出*/
+    overflow: hidden;
+    /*超出部分隐藏*/
+    text-overflow: ellipsis;
+    /*显示省略号*/
+    white-space: nowrap;
+    /*不换行*/
+  }
+  .price {
+    margin: 0 10px 14px;
+    text-align: center;
+    font: 14px / 1.5 Helvetica Neue, Helvetica, Arial, Microsoft Yahei,
+      Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+    color: #ff6700;
+    text-align: center;
+  }
+  .price del {
+    color: #999;
+    margin-left: 10px;
+  }
+
+  .card:hover {
+    z-index: 2;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transform: translate3d(0, -2px, 0);
+  }
+</style>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="shi">
+        <h4>静夜思</h4>
+        <p>窗前明月光</p>
+        <p>疑是地上霜</p>
+        <p>举头望明月</p>
+        <p>低头思故乡</p>
+      </div>
+      <p>
+        这首诗是李白的《静夜思》 这首诗表达了诗人对故乡的思念之情。
+        李白的《静夜思》是一首优美的诗歌，它以其简洁的语言和优美的意境而闻名。
+      </p>
+    </div>
+
+    <div class="box">文字内容</div>
+    <input type="text" class="search" />
+    <footer>
+      <a href="https://www.baidu.com">百度一下</a>
+      <a href="https://www.google.com">Google一下</a>
+    </footer>
+  </body>
+</html>
+<script></script>
+<style>
+  body {
+    font: 14px / 1.5 Helvetica Neue, Helvetica, Arial, Microsoft Yahei,
+      Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+  }
+
+  /* 后代选择器 */
+  #content > p {
+    text-indent: 2em;
+    text-align: justify;
+  }
+  .shi {
+    text-align: center;
+    line-height: 27px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .shi h4 {
+    font-size: 20px;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  /* footer :link {
+    color: #000;
+    text-decoration: none;
+  }
+  footer :visited {
+    color: orange;
+    text-decoration: none;
+  }*/
+  footer :hover {
+    color: red;
+    text-decoration: underline;
+  }
+  /*footer :active {
+    color: green;
+    text-decoration: underline;
+  }*/
+  .box {
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+    text-align: center;
+    line-height: 200px;
+  }
+  .box:hover {
+    background-color: orange;
+  }
+  .search {
+    width: 200px;
+    height: 30px;
+    transition: all 0.5s;
+  }
+  .search:focus {
+    background-color: yellow;
+    width: 300px;
+  }
+</style>

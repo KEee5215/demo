@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表单伪类选择器</title>
+  </head>
+  <body>
+    <div>
+      <!-- <input type="radio" name="1" class="input" />
+      <input type="radio" name="1" class="input" /> -->
+
+      <button class="button" disabled>注册</button>
+      <input type="checkbox" id="agree" />
+      <label for="agree">同意注册</label>
+    </div>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .input {
+    width: 120px;
+    height: 30px;
+    border: 1px solid #ccc;
+  }
+  .button {
+    width: 80px;
+    height: 30px;
+    background-color: hsl(37, 99%, 59%);
+    border: none;
+    cursor: pointer;
+    border-radius: 10%;
+    font-size: large;
+    color: white;
+  }
+  .button:disabled {
+    /*background-color: #999;*/
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  input:checked + label {
+    color: red;
+  }
+</style>

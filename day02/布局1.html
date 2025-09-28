@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>display显示模式转换</title>
+  </head>
+  <body>
+    <div class="box">
+      <ul>
+        <li><a href="#">手机</a></li>
+        <li><a href="#">电脑</a></li>
+        <li><a href="#">智能设备</a></li>
+        <li><a href="#">生活家</a></li>
+        <li><a href="#">智能穿戴</a></li>
+        <li><a href="#">智能出行</a></li>
+        <li><a href="#">智能生活</a></li>
+        <li><a href="#">智能医疗</a></li>
+        <li><a href="#">智能教育</a></li>
+      </ul>
+    </div>
+    <div class="list">
+      <a href="#">123</a>
+      <a href="#">456</a>
+      <a href="#">789</a>
+      <a href="#">101112</a>
+    </div>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  ul,
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .box ul li a {
+    height: 42px;
+    line-height: 42px;
+    padding-left: 20px;
+    color: aliceblue;
+    display: block;
+  }
+
+  .box ul li a:hover {
+    background-color: darkorange;
+  }
+
+  .box {
+    width: 234px;
+    height: 460px;
+    background: rgb(226, 225, 225);
+    margin: 100px auto;
+    padding: 20px 0;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+  .list {
+    width: 460px;
+    height: 460px;
+    background: rgb(226, 225, 225);
+    margin: 100px auto;
+  }
+  .list a {
+    display: inline-block;
+    height: 40px;
+    background-color: aquamarine;
+    color: aliceblue;
+    padding: 0 30px;
+    border-radius: 10px;
+  }
+</style>

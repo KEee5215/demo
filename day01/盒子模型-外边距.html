@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box1">内容</div>
+    <div class="box2">内容</div>
+    <div class="box3"><div class="box4">内容</div></div>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  div[class^="box"] {
+    border: 2px solid red;
+    border-radius: 10px;
+  }
+  .box1 {
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+  }
+
+  .box3 {
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+  }
+
+  .box4 {
+    background-color: lightblue;
+    margin-top: 10px;
+  }
+</style>
