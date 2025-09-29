@@ -1,0 +1,38 @@
+/* 无 */
+/* 主体 */
+.entry {
+  height: 500px;
+  background-color: aliceblue;
+}
+
+.entry .w {
+  height: 100%;
+  background: url(../uploads/banner1.png) no-repeat;
+}
+
+.category {
+  height: 500px;
+  width: 250px;
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.category ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 14.5px 0 29px;
+  color: #ffffff;
+}
+.category ul li:hover {
+  background-color: #00be9a;
+}
+.category ul li a {
+  color: #ffffff;
+  font-size: 14px;
+}
+.category ul li a:first-child {
+  color: #ffffff;
+  font-size: 16px;
+  margin-right: 10px;
+}
