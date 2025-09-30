@@ -3,6 +3,12 @@
   margin: 0 auto;
 }
 
+/* 让文本单行溢出显示省略号 */
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .shortcut {
   height: 52px;
   background-color: #333333;
