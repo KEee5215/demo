@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>哔哩哔哩首页盒子布局</title>
+  </head>
+  <body>
+    <div class="box">
+      <div class="item item1"><img src="../day02/img/c1.webp" alt="" /></div>
+      <div class="item"><img src="../day02/img/c2.webp" alt="" /></div>
+      <div class="item"><img src="../day02/img/c3.webp" alt="" /></div>
+      <div class="item"><img src="../day02/img/c4.webp" alt="" /></div>
+      <div class="item"><img src="../day02/img/5.webp" alt="" /></div>
+      <div class="item"><img src="../day02/img/6.webp" alt="" /></div>
+      <div class="item"><img src="../day02/img/c7.webp" alt="" /></div>
+      <div class="item"><img src="../day02/img/c8.webp" alt="" /></div>
+      <div class="item"><img src="../day02/img/9.webp" alt="" /></div>
+      <div class="item"><img src="../day02/img/10.webp" alt="" /></div>
+      <div class="item"><img src="../day02/img/11.webp" alt="" /></div>
+      <div class="item"><img src="../day02/img/12.webp" alt="" /></div>
+    </div>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .box {
+    width: 1080px;
+    /* border-radius: 15px; */
+    margin: 80px auto 0 auto;
+    /* background-color: aquamarine; */
+    display: grid;
+    padding: 20px;
+    /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+    /* b站用的媒体查询来判断是否是移动端实现小的响应式布局的 */
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+  }
+
+  .item {
+    background-color: pink;
+    height: 150px;
+    border-radius: 15px;
+  }
+  .item1 {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    height: auto;
+    /* min-height: 300px; */
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+</style>

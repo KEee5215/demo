@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自动填充案例</title>
+  </head>
+  <body>
+    <div class="box">
+      <div class="item">
+        <a href=""><img src="../day02/img/c1.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href=""><img src="../day02/img/c2.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href=""><img src="../day02/img/c3.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href=""><img src="../day02/img/c4.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href=""><img src="../day02/img/5.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href=""><img src="../day02/img/6.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href=""><img src="../day02/img/c7.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href=""><img src="../day02/img/c8.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href=""><img src="../day02/img/9.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href=""><img src="../day02/img/10.webp" alt="" /></a>
+      </div>
+      <div class="item">
+        <a href=""><img src="../day02/img/11.webp" alt="" /></a>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .box {
+    margin: 80px auto 0 auto;
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+    background-color: rgb(71, 64, 64);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    border-radius: 15px;
+  }
+  .item {
+    height: 180px;
+    background-color: rgb(228, 243, 238);
+    padding: 15px;
+    border-radius: 15px;
+  }
+  .item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

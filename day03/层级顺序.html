@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>层级顺序</title>
+  </head>
+  <body>
+    <div class="box">
+      <img src="../day02/img/1.webp" alt="" class="img1" />
+      <img src="../day02/img/2.webp" alt="" class="img2" />
+      <img src="../day02/img/3.webp" alt="" class="img3" />
+      <img src="../day02/img/4.webp" alt="" class="img4" />
+    </div>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .box {
+    /* position: relative; */
+    height: 500px;
+    width: 500px;
+    background: #000;
+  }
+  img {
+    width: 200px;
+    position: absolute;
+  }
+
+  .img1 {
+    left: 20px;
+    top: 20px;
+  }
+  .img2 {
+    left: 80px;
+    top: 20px;
+  }
+  .img3 {
+    left: 140px;
+    top: 20px;
+  }
+  .img4 {
+    left: 200px;
+    top: 20px;
+  }
+
+  img:hover {
+    z-index: 1;
+  }
+</style>

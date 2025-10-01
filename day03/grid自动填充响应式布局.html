@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自动填充响应式布局</title>
+  </head>
+  <body>
+    <div class="box">
+      <div class="item">首页</div>
+      <div class="item">视频</div>
+      <div class="item">直播</div>
+      <div class="item">关注</div>
+      <div class="item">我的</div>
+      <div class="item">更多</div>
+      <div class="item">搜索</div>
+      <div class="item">登录</div>
+      <div class="item">注册</div>
+      <div class="item">注册</div>
+      <div class="item">设置</div>
+      <div class="item">登录</div>
+      <div class="item">注册</div>
+    </div>
+  </body>
+</html>
+<style>
+  .box {
+    width: 80%;
+    margin: 0 auto;
+    background-color: aquamarine;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+  .item {
+    background-color: rgb(75, 202, 221);
+    text-align: center;
+    height: 80px;
+    line-height: 40px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+</style>

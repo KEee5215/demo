@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>哔哩哔哩导航栏grid布局</title>
+  </head>
+  <body>
+    <div class="box">
+      <div class="item">首页</div>
+      <div class="item">视频</div>
+      <div class="item">直播</div>
+      <div class="item">关注</div>
+      <div class="item">我的</div>
+      <div class="item">更多</div>
+      <div class="item">搜索</div>
+      <div class="item">登录</div>
+      <div class="item">注册</div>
+      <div class="item">设置</div>
+      <div class="item">用户</div>
+      <div class="item">更多</div>
+      <div class="item">关注</div>
+      <div class="item">我的</div>
+      <div class="item">更多</div>
+      <div class="item">搜索</div>
+      <div class="item">登录</div>
+      <div class="item">注册</div>
+      <div class="item">注册</div>
+      <div class="item">设置</div>
+      <div class="item">登录</div>
+      <div class="item">注册</div>
+    </div>
+  </body>
+</html>
+<style>
+  .box {
+    width: 965px;
+    margin: 0 auto;
+    margin-top: 60px;
+    gap: 10px;
+    /* background-color: aquamarine; */
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+  }
+
+  .item {
+    background-color: rgb(246, 247, 248);
+    text-align: center;
+    line-height: 28px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+
+  .item:hover {
+    background-color: rgb(230, 231, 232);
+    cursor: pointer;
+  }
+</style>
