@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2d平移变换</title>
+  </head>
+  <body>
+    <div class="box1-wrapper">
+      <div class="box1"></div>
+    </div>
+    <div class="box2"></div>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .box1-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+
+  .box1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    /* transform: translate(100px, 100px); */
+    transition: all 0.8s;
+    position: relative;
+    z-index: 1;
+  }
+  .box1-wrapper:hover .box1 {
+    transform: translateX(100px);
+    background-color: rgb(206, 223, 54);
+  }
+
+  .box2 {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 100px;
+    top: 0px;
+    background-color: rgb(9, 255, 0);
+    /* z-index: -1; */
+    /* transform: translate(200px, 200px); */
+  }
+</style>
