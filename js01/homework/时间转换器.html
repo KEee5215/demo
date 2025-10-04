@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //用户输入
+      let time = prompt("请输入秒数:");
+      //将用户输入的秒数转换为小时,分钟和秒数
+      let hour = Math.floor(time / 3600);
+      let minute = Math.floor(time / 60) % 60;
+      let second = time % 60;
+      //输出转换结果
+      console.log(hour + "小时" + minute + "分" + second + "秒");
+    </script>
+  </body>
+</html>

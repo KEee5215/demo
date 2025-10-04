@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>遍历对象</title>
+  </head>
+  <body>
+    <h1>学生信息表格</h1>
+    <table>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+      </tr>
+    </table>
+    <script>
+      let student = [
+        {
+          name: "张三",
+          age: 18,
+          sex: "男",
+        },
+        {
+          name: "李四",
+          age: 19,
+          sex: "男",
+        },
+        {
+          name: "王五",
+          age: 20,
+          sex: "男",
+        },
+      ];
+
+      for (let i = 0; i < student.length; i++) {
+        console.log(student[i]);
+      }
+
+      let table = document.querySelector("table");
+      for (let i = 0; i < student.length; i++) {
+        let tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${student[i].name}</td>
+          <td>${student[i].age}</td>
+          <td>${student[i].sex}</td>
+        `;
+        table.appendChild(tr);
+      }
+    </script>
+  </body>
+</html>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  table {
+    width: 50%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 2px solid #000;
+  }
+  th,
+  td {
+    border: 2px solid #000;
+    padding: 10px;
+    text-align: center;
+  }
+  th {
+    background-color: #a2d7ec;
+  }
+
+  tr:hover {
+    background-color: #dddcdc;
+    cursor: pointer;
+  }
+</style>

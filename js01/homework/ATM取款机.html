@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 用户原有的金额
+      let money = 50000;
+      // 用户选择操作
+      let option = prompt("请选择您的操作：1.查询余额 2.取款 3.存款 4.退出");
+      while (true) {
+        if (option === "1") {
+          //查询余额
+          alert(`您当前的余额为：${money}元`);
+        } else if (option === "2") {
+          //取款
+          let withdrawMoney = +prompt("请输入您要取款的金额");
+          if (withdrawMoney > money) {
+            alert("您的余额不足");
+          } else {
+            money -= withdrawMoney;
+            alert(`您已取款${withdrawMoney}元，当前余额为${money}元`);
+          }
+        } else if (option === "3") {
+          //存款
+          let depositMoney = +prompt("请输入您要存款的金额");
+          money += depositMoney;
+          alert(`您已存款${depositMoney}元，当前余额为${money}元`);
+        } else if (option === "4") {
+          //退出
+          alert("谢谢使用，再见！");
+          break;
+        } else {
+          alert("您输入的操作有误，请重新输入");
+        }
+        option = prompt("请选择您的操作：1.查询余额 2.取款 3.存款 4.退出");
+      }
+    </script>
+  </body>
+</html>

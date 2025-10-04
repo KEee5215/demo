@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>声明商品对象</title>
+  </head>
+  <body>
+    <script>
+      let goods = {
+        // goods: "xiaomi SU7",
+        goodsName: "xiaomi SU7",
+        num: 100,
+        weight: "100g",
+        address: "中国 北京 东城区",
+        action: function () {
+          console.log("我是" + this.goodsName);
+        },
+      };
+      console.log(goods.goodsName);
+      console.log(goods["goodsName"]);
+      goods.action();
+    </script>
+  </body>
+</html>

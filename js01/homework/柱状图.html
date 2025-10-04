@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>柱状图</title>
+  </head>
+  <body>
+    <div class="box">
+      <div class="item"></div>
+
+      <div class="item"></div>
+
+      <div class="item"></div>
+
+      <div class="item"></div>
+    </div>
+    <div class="index">
+      <span>第一天</span>
+      <span>第二天</span>
+      <span>第三天</span>
+      <span>第四天</span>
+    </div>
+    <script>
+      const firstDay = +prompt("第一天做的俯卧撑数量是：");
+      const secondDay = +prompt("第二天做的俯卧撑数量是：");
+      const thirdDay = +prompt("第三天做的俯卧撑数量是：");
+      const fourthDay = +prompt("第四天做的俯卧撑数量是：");
+      const arr = [firstDay, secondDay, thirdDay, fourthDay];
+      console.log(arr);
+
+      // 获取所有柱子
+      const items = document.querySelectorAll(".item");
+      // 假设最大高度为 400px，最大值为 100（可根据实际情况调整）
+      const max = Math.max(...arr, 100);
+      items.forEach((item, idx) => {
+        // 计算高度比例
+        const height = (arr[idx] / max) * 400;
+        item.style.height = height + "px";
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    /* background-color: pink; */
+    margin: 100px auto 0 auto;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .item {
+    width: 50px;
+    height: 0px;
+    background-color: pink;
+  }
+
+  .index {
+    width: 400px;
+    height: 50px;
+    /* background-color: pink; */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .index span {
+    font-size: 18px;
+  }
+</style>
