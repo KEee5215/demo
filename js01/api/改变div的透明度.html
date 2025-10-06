@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <input type="range" min="0" max="1" step="0.1" id="opacity" />
+
+    <script>
+      //1获取事件源
+      const box = document.querySelector("#box");
+      const opacity = document.querySelector("#opacity");
+      //2绑定事件
+      //绑定change事件
+      opacity.onchange = () => {
+        box.style.opacity = opacity.value;
+      };
+
+      box.onmouseover = () => {
+        box.style.backgroundColor = "yellow";
+      };
+      box.onmouseout = () => {
+        box.style.backgroundColor = "pink";
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>用户倒计时</title>
+  </head>
+  <br>
+    <textarea name="text" id="1">我这句话很重要,你懂了吗</textarea>
+</br>
+    <button disabled></button>
+  </body>
+</html>
+
+<script>
+    let count = 3;
+    let timer = setInterval(function(){
+        count--;
+        wait();
+        if(count === 0){
+            clearInterval(timer);
+            console.log("计时器已关闭");
+            button.disabled = false;
+            button.innerHTML = "我懂了";
+        }
+    },1000);
+
+    const button = document.querySelector("button");
+    
+    function wait() {
+        button.innerHTML = `我懂了(${count})`;
+    }
+</script>

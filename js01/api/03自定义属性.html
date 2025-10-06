@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自定义属性</title>
+  </head>
+  <body>
+    <div data-id="1"></div>
+    <div data-id="2"></div>
+    <div data-id="3"></div>
+  </body>
+</html>
+<script>
+  const divs = document.querySelectorAll("div");
+  divs.forEach((div) => {
+    const id = div.dataset.id;
+    console.log(id);
+  });
+</script>

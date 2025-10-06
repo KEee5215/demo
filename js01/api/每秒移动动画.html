@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>每秒移动动画</title>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="startBtn">开始移动</button>
+    <button id="stopBtn">停止移动</button>
+    <div id="box"></div>
+    <script>
+      const box = document.querySelector("#box");
+      const startBtn = document.querySelector("#startBtn");
+      const stopBtn = document.querySelector("#stopBtn");
+      let intervalId;
+
+      startBtn.onclick = function () {
+        intervalId = setInterval(function () {
+          if (box.offsetLeft >= 500) {
+            box.style.left = "-100px";
+            // clearInterval(intervalId);
+          }
+          box.style.left = box.offsetLeft + 100 + "px";
+        }, 500);
+      };
+
+      stopBtn.onclick = function () {
+        clearInterval(intervalId);
+      };
+    </script>
+  </body>
+</html>

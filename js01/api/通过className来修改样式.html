@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>通过className来修改样式</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #f99393;
+      }
+      .changeColor {
+        background-color: #93f9b9;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      const box = document.querySelector(".box");
+      box.className = "box changeColor";
+    </script>
+  </body>
+</html>

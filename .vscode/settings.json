@@ -1,3 +1,5 @@
 {
-  "livePreview.defaultPreviewPath": "/小鲜兔/16-小兔鲜首页项目/index.html"
+  "livePreview.defaultPreviewPath": "/小鲜兔/16-小兔鲜首页项目/index.html",
+  "trae.tab.enableRename": false,
+  "trae.tab.enableAutoImport": false
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>获取表单内容</title>
+  </head>
+  <body>
+    <input type="text" value="jack" />
+    <button><></button>
+  </body>
+</html>
+
+<script>
+  // 获取表单内容
+  //不能用input.innerHTML获取表单内容
+  //innerHTML获取的是普通标签内部的内容
+  const input = document.querySelector("input");
+  console.log(input.value);
+  input.value = "rose";
+  // 点击按钮获取表单内容
+  const button = document.querySelector("button");
+  button.addEventListener("click", function () {
+    if (input.type === "password") {
+      input.type = "text";
+    } else {
+      input.type = "password";
+    }
+  });
+</script>
