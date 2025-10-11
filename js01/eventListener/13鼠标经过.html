@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>鼠标经过</title>
+    <style>
+      .dad {
+        width: 500px;
+        height: 500px;
+        background-color: rgb(86, 218, 92);
+      }
+      .son {
+        width: 200px;
+        height: 200px;
+        background-color: rgb(255, 161, 161);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dad">
+      <div class="son"></div>
+    </div>
+
+    <script>
+      const dad = document.querySelector(".dad");
+      dad.addEventListener("mouseenter", function () {
+        console.log("鼠标进入");
+      });
+      dad.addEventListener("mouseleave", function () {
+        console.log("鼠标离开");
+      });
+    </script>
+  </body>
+</html>

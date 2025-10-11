@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>b站评论框</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .wrapper {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-end;
+        /* align-items: center; */
+      }
+
+      .wrapper textarea {
+        /* width: 99%; */
+        flex: 1;
+        height: 50px;
+        margin-left: 20px;
+        padding: 10px;
+        background-color: #f2f1f1;
+        border-radius: 10px;
+        outline: none;
+        border-color: transparent;
+        resize: none;
+        transition: all 0.5s;
+        overflow: hidden;
+        min-width: 10px;
+      }
+      .wrapper textarea:focus {
+        height: 70px;
+        background: white;
+        border-color: #e4e4e4;
+      }
+
+      .wrapper .avatra {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      .wrapper .avatra img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .wrapper button {
+        margin-left: 20px;
+        width: 85px;
+        height: 50px;
+        border-radius: 5px;
+        background-color: #4ea7d7;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .wrapper .total {
+        margin-right: 100px;
+        color: #999;
+        margin-top: 5px;
+        font-size: 13px;
+        opacity: 0;
+        transition: all 0.5s;
+      }
+
+      .container {
+        margin: 100px auto;
+        width: max(80%, 300px);
+      }
+
+      .list {
+        width: 100%;
+        margin: 0 auto;
+        /* align-items: center; */
+      }
+      .list .item {
+        /* width: ; */
+        display: flex;
+      }
+
+      .list .avatra {
+        min-width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-top: 15px;
+        margin-right: 10px;
+      }
+      .list .avatra img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .list .info {
+        margin-top: 20px;
+        margin-left: 10px;
+      }
+      .list .info p {
+        margin-bottom: 7px;
+      }
+
+      .list .info .name {
+        font-size: 12px;
+        color: #666;
+      }
+      .list .info .text {
+        font-size: 15px;
+        color: #000;
+      }
+      .list .info .time {
+        font-size: 13px;
+        color: #999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="avatra">
+          <img src="../image/原神.png" alt="" />
+        </div>
+        <textarea name="1" id="" placeholder="请发一条友善的评论"></textarea>
+        <button>发布</button>
+      </div>
+      <div class="wrapper">
+        <span class="total">0/200字</span>
+      </div>
+      <!-- 评论 -->
+      <div class="list" style="display: none">
+        <div class="item">
+          <div class="avatra">
+            <img src="../image/原神.png" alt="" />
+          </div>
+          <div class="info">
+            <p class="name">小王</p>
+            <p class="text">
+              pink老师必须顶，我是一名运维人员，管理都自己写shell和pyth。n自动化，上班闲时看了老师的htm《和css教程入坑了，觉得前端挺有趣的，接着看了其他机构发的vue，刚学完了，js基础不是太扎实，这课程就让我看到了，果断收藏学习，另外我在公司演示demo的时候时不时也用粉色，同事都觉得奇怪，我就说这是纪念方式
+            </p>
+            <p class="time">2023-01-31 12:06</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const textarea = document.querySelector("textarea");
+      const total = document.querySelector(".total");
+      //输入框聚焦时显示字数
+      textarea.addEventListener("focus", function () {
+        total.style.opacity = "1";
+      });
+      //输入框失焦时隐藏字数
+      textarea.addEventListener("blur", function () {
+        total.style.opacity = "0";
+      });
+      //输入框输入时实时显示字数
+      textarea.addEventListener("input", function () {
+        total.textContent = textarea.value.length + "/200字";
+      });
+
+      // 发布按钮点击时,发布评论
+      const btn = document.querySelector("button");
+      const list = document.querySelector(".list");
+      const text = document.querySelector(".text");
+      const name = document.querySelector(".name");
+      const time = document.querySelector(".time");
+      btn.addEventListener("click", function () {
+        text.innerHTML = textarea.value.trim();
+        if (textarea.value.trim()) {
+          list.style.display = "block";
+          time.innerHTML = formattedTime;
+        }
+        textarea.value = "";
+        total.textContent = "0/200字";
+      });
+
+      textarea.addEventListener("keyup", function (e) {
+        if (e.key === "Enter") {
+          //   btn.click();
+          //   console.log(textarea.value);
+
+          text.innerHTML = textarea.value.trim();
+          if (textarea.value.trim()) {
+            list.style.display = "block";
+            time.innerHTML = formattedTime;
+          }
+          textarea.value = "";
+          total.textContent = "0/200字";
+        }
+      });
+
+      // 转换为本地日期时间格式
+      const formattedTime = new Date()
+        .toLocaleString("zh-CN", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+        })
+        .replace(/\//g, "-"); // 将斜杠替换为短横线
+    </script>
+  </body>
+</html>

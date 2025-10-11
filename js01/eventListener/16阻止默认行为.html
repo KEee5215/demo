@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>阻止元素默认行为</title>
+  </head>
+  <body>
+    <form action="../MacDocker/MacDocker.html">
+      <input type="submit" name="" id="" />
+    </form>
+
+    <a href="../MacDocker/MacDocker.html">点我</a>
+    <script>
+      const form = document.querySelector("form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        // console.log("提交");
+      });
+
+      const a = document.querySelector("a");
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        // console.log("点击");
+      });
+    </script>
+  </body>
+</html>

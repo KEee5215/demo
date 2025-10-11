@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>轮播图</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul li {
+        list-style: none;
+      }
+
+      .slider {
+        /* min-width: 500px;
+        min-height: 363px; */
+        width: 500px;
+        height: 363px;
+        margin: 100px auto;
+        background-color: pink;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .slider-wapper {
+        width: 100%;
+        height: 75%;
+      }
+      .slider-wapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .slider-footer {
+        position: relative;
+        width: 100%;
+        height: 25%;
+        background-color: pink;
+        padding: 10px;
+      }
+      .slider-footer p {
+        text-align: left;
+        font-family: PingFang SC, HarmonyOS_Regular, Helvetica Neue,
+          Microsoft YaHei, sans-serif !important;
+        font-weight: 400;
+        font-size: 20px;
+        color: #fff;
+        cursor: pointer;
+      }
+      .slider-indicator {
+        display: flex;
+        margin: 15px 0 0 0px;
+        justify-content: flex-start;
+      }
+      .slider-indicator li {
+        width: 10px;
+        height: 10px;
+        background-color: #c4c0c0;
+        border-radius: 50%;
+        margin: 0 5px;
+        cursor: pointer;
+      }
+      .slider-indicator li.active {
+        background-color: #fff;
+        transform: scale(1.4);
+      }
+
+      .toggle {
+        position: absolute;
+        top: 25px;
+        right: 20px;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+      }
+      button {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.5);
+        margin: 0 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: rgba(255, 255, 255, 0.7);
+        /* transform: scale(1.2); */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider">
+      <div class="slider-wapper">
+        <img src="../../day02/img/c2.webp" alt="" />
+      </div>
+      <div class="slider-footer">
+        <p>无限暖暖,建造大师</p>
+        <ul class="slider-indicator">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        <div class="toggle">
+          <button><</button>
+          <button>></button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  const object = [
+    {
+      url: "../../day02/img/c3.webp",
+      title: "1美丽的大桥,傍晚的惬意",
+      color: "#0b1117",
+    },
+    {
+      url: "../../day02/img/c8.webp",
+      title: "2小鬼,不要被我抓到哦",
+      color: "#2d3950",
+    },
+    {
+      url: "../../day02/img/c2.webp",
+      title: "3温柔的女人",
+      color: "#47423a",
+    },
+    {
+      url: "../../day02/img/c6.webp",
+      title: "4幸福之夜",
+      color: "#7c314b",
+    },
+    {
+      url: "../../day02/img/c7.webp",
+      title: "5bu~bu~bu~ 枪枪致命",
+      color: "#3b3223",
+    },
+  ];
+  const slider = document.querySelector(".slider");
+  const sliderWapper = document.querySelector(".slider-wapper img");
+  const sliderFooter = document.querySelector(".slider-footer");
+  const sliderFooterP = document.querySelector(".slider-footer p");
+  const sliderIndicator = document.querySelector(".slider-indicator");
+
+  function getRandom() {
+    return Math.floor(Math.random() * object.length);
+  }
+
+  //   const randomIndex = getRandom();
+  //   sliderWapper.src = object[randomIndex].url;
+  //   sliderFooterP.textContent = object[randomIndex].title;
+  //   sliderFooter.style.backgroundColor = object[randomIndex].color;
+  //   //   console.log(sliderIndicator.children);
+  //   sliderIndicator.children[randomIndex].classList.add("active");
+
+  //定义当前图片索引
+  let current = 0;
+
+  //函数
+  function render(index) {
+    sliderWapper.src = object[index].url;
+    sliderFooterP.textContent = object[index].title;
+    sliderFooter.style.backgroundColor = object[index].color;
+    // 清除所有指示器的active
+    for (let li of sliderIndicator.children) {
+      li.classList.remove("active");
+    }
+    sliderIndicator.children[index].classList.add("active");
+  }
+  // 初始化渲染
+  render(current);
+
+  //定时切换索引
+  // let timer = setInterval(() => {
+  //   current = (current + 1) % object.length;
+  //   render(current);
+  // }, 3000);
+  let timer;
+  timer = setInterval(() => {
+    toggle2.click();
+  }, 1000);
+
+  const toggle1 = document.querySelectorAll(".toggle button")[0];
+  const toggle2 = document.querySelectorAll(".toggle button")[1];
+
+  toggle1.addEventListener("click", function () {
+    if (current === 0) {
+      current = object.length;
+    }
+    current--;
+    render(current);
+  });
+  toggle2.addEventListener("click", function () {
+    current = (current + 1) % object.length;
+    render(current);
+  });
+
+  //鼠标进入slider,计时器停止
+  slider.addEventListener("mouseenter", function () {
+    clearInterval(timer);
+  });
+  slider.addEventListener("mouseleave", function () {
+    clearInterval(timer);
+    // timer = setInterval(() => {
+    //   current = (current + 1) % object.length;
+    //   render(current);
+    // }, 3000);
+    timer = setInterval(() => {
+      toggle2.click();
+    }, 1000);
+  });
+</script>

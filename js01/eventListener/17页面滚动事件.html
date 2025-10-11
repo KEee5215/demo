@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>页面滚动事件</title>
+    <style>
+      body {
+        height: 2000px;
+        padding-top: 100px;
+      }
+      div {
+        width: 150px;
+        height: 200px;
+        background-color: rgb(248, 197, 197);
+        position: fixed;
+        overflow: scroll;
+        border: 1px solid red;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      倒是基地啊上帝 解耦进去哦对我的期望 搭配我的骄傲我递交 哦大家安排时间的od
+      doajwwjfpjawpf卡哇大王基督教 按键都怕误导无法 警方帕夫我就佩服
+      佛文化佛尔哈佛请我们去 到我佛我对你完全 i偶分五级覅嘿嘿 飞机票违反及配件
+    </div>
+  </body>
+  <script>
+    window.addEventListener("scroll", function () {
+      console.log(window.scrollY);
+    });
+    const div = document.querySelector("div");
+    div.addEventListener("scroll", function () {
+      console.log(div.scrollTop);
+    });
+
+    window.addEventListener("scroll", function () {
+      console.log(document.documentElement.scrollTop);
+      if (document.documentElement.scrollTop >= 100) {
+        div.style.display = "block";
+      } else {
+        div.style.display = "none";
+      }
+    });
+  </script>
+</html>

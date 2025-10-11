@@ -381,3 +381,41 @@ html {
 .news ul li a .con span {
   margin-right: 20px;
 }
+
+.elevator {
+  background-color: #ffffff;
+  position: fixed;
+  left: 50%;
+  top: 280px;
+  z-index: 999;
+  margin-left: 640px;
+  /* border-radius: 10px; */
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.elevator li a {
+  width: 36px;
+  white-space: normal;
+  word-wrap: break-word;
+  display: block;
+  line-height: 1.5;
+  color: #333333; /* 添加默认颜色 */
+}
+
+.elevator li {
+  padding: 10px;
+  /* border: 1px solid #00be9a; */
+}
+
+/* .elevator li:hover {
+  background-color: #00be9a;
+} */
+
+.elevator li:hover a {
+  color: #00be9a;
+}
+
+.elevator li a.active {
+  color: #00be9a;
+}

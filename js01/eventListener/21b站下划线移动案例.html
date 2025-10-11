@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>b站下划线</title>
+    <style>
+      html {
+        /* 滑动平滑 */
+        scroll-behavior: smooth;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      .wrap {
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      .head a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .cantainer {
+        width: 100%;
+        /* height: 100vh; */
+        margin: 0 auto;
+        background-color: rgb(255, 255, 255);
+        position: relative;
+        overflow: hidden;
+      }
+      .head {
+        /* margin-top: 10px; */
+        width: 100%;
+        height: 75px;
+        /* background-color: rgb(214, 75, 75); */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 0px 20px; */
+        /* border-bottom: 1px solid rgb(204, 204, 204); */
+      }
+
+      .head .logo {
+        width: 100px;
+        height: 100%;
+      }
+
+      .head .logo h1 {
+        width: 100%;
+        height: 100%;
+      }
+      .head .logo h1 a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: url(../image/粉色女生.png) no-repeat;
+        background-size: cover; /* 添加背景图片尺寸控制 */
+        background-position: center; /* 居中显示 */
+        text-indent: -999px;
+        overflow: hidden;
+      }
+      .head .nav ul {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .head .nav ul li {
+        display: block;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        background-color: rgb(209, 211, 210);
+        border-radius: 50%;
+      }
+
+      .head .nav ul li a {
+        font-size: 10px;
+        color: #f0749a;
+      }
+
+      .head .nav ul button {
+        background-color: #f0749a;
+        color: #fff;
+        border: none;
+        outline: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .nav-common {
+        width: 100%;
+        height: 50px;
+        background-color: rgb(255, 255, 255);
+        /* padding: 0 20px; */
+        border-bottom: 0.5px solid rgb(204, 204, 204);
+      }
+      .nav-common ul {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-start;
+        align-items: center;
+        gap: 20px;
+        overflow-x: auto; /* 允许横向滚动 */
+        overflow-y: hidden; /* 隐藏纵向滚动 */
+        white-space: nowrap; /* 防止换行 */
+        padding: 0 0px; /* 添加内边距 */
+      }
+
+      /* 隐藏滚动条样式（可选） */
+      .nav-common ul::-webkit-scrollbar {
+        display: none; /* 隐藏WebKit浏览器的滚动条 */
+      }
+
+      .nav-common ul {
+        -ms-overflow-style: none; /* 隐藏IE/Edge的滚动条 */
+        scrollbar-width: none; /* 隐藏Firefox的滚动条 */
+      }
+      .nav-common ul li a {
+        font-size: 16px;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        /* display: block; */
+      }
+      .nav-common ul li a.active {
+        color: #f0749a;
+      }
+
+      .nav-common .line {
+        width: 30px;
+        height: 3px;
+        background-color: #f0749a;
+        position: absolute;
+        top: 97%;
+        transition: all 0.5s;
+        position: absolute;
+        left: 0;
+      }
+
+      .content {
+        width: 100%;
+      }
+      .content .head {
+        height: 50px;
+      }
+      .content .head .top a {
+        font-size: 20px;
+        color: black;
+        font-weight: 500;
+      }
+      .content .head .paihangbang a {
+        font-size: 16px;
+        color: #f0a10f;
+        font-weight: 300;
+      }
+      .content .list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+        gap: 10px;
+      }
+
+      .content .list .item {
+        /* 移除固定宽度 */
+        height: 150px; /* 可以设置固定高度 */
+        position: relative;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .content .list .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .content .list .item .color {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 55px;
+        background-color: #fff;
+        /* opacity: 1; */
+        /* transition: all 0.5s; */
+      }
+
+      .content .list .item .color .title {
+        /* 不换行,超出显示省略号 */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .content .list .item .color .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 5px;
+        /* padding: 0 10px; */
+        color: #858282;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="cantainer">
+        <div class="head">
+          <div class="logo">
+            <h1><a href="#" title="bilibili">bilibili</a></h1>
+          </div>
+          <div class="nav">
+            <ul>
+              <li><a href="javascript:;">Search</a></li>
+              <li><a href="javascript:;">登录</a></li>
+              <button>下载App</button>
+            </ul>
+          </div>
+        </div>
+        <div class="nav1 nav-common">
+          <ul>
+            <li><a href="javascript:;" class="active">首页</a></li>
+            <li><a href="javascript:;">动画</a></li>
+            <li><a href="javascript:;">番剧</a></li>
+            <li><a href="javascript:;">国创</a></li>
+            <li><a href="javascript:;">音乐</a></li>
+            <li><a href="javascript:;">舞蹈</a></li>
+            <li><a href="javascript:;">游戏</a></li>
+            <li><a href="javascript:;">科技</a></li>
+            <li><a href="javascript:;">生活</a></li>
+            <li><a href="javascript:;">鬼畜</a></li>
+            <li><a href="javascript:;">时尚</a></li>
+            <li><a href="javascript:;">广告</a></li>
+            <div class="line"></div>
+          </ul>
+        </div>
+        <div class="nav2 nav-common">
+          <ul>
+            <li><a href="javascript:;" class="active">推荐</a></li>
+            <li><a href="javascript:;">MAD-AMV</a></li>
+            <li><a href="javascript:;">MMD-3D</a></li>
+            <li><a href="javascript:;">短片 手书 配音</a></li>
+            <li><a href="javascript:;">电影</a></li>
+            <li><a href="javascript:;">娱乐</a></li>
+            <li><a href="javascript:;">影视</a></li>
+            <li><a href="javascript:;">国创</a></li>
+            <li><a href="javascript:;">动画</a></li>
+            <li><a href="javascript:;">原创</a></li>
+            <li><a href="javascript:;">影视</a></li>
+            <div class="line"></div>
+          </ul>
+        </div>
+        <div class="content">
+          <div class="head">
+            <div class="top"><a href="">热门推荐</a></div>
+            <div class="paihangbang"><a href="">排行榜 ></a></div>
+          </div>
+          <div class="list">
+            <div class="item">
+              <img src="https://t.alcy.cc/ycy" alt="" />
+              <div class="color">
+                <h3 class="title">新出的游戏,大家快来看看</h3>
+                <div class="info">
+                  <div class="author">UP KEEE</div>
+                  <div class="time">2023-05-01</div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="https://t.alcy.cc/ai" alt="" />
+              <div class="color">
+                <h3 class="title">新出的游戏,大家快来看看</h3>
+                <div class="info">
+                  <div class="author">UP KEEE</div>
+                  <div class="time">2023-05-01</div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="https://t.alcy.cc/moez" alt="" />
+              <div class="color">
+                <h3 class="title">新出的游戏,大家快来看看</h3>
+                <div class="info">
+                  <div class="author">UP KEEE</div>
+                  <div class="time">2023-05-01</div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="https://t.alcy.cc/ysz" alt="" />
+              <div class="color">
+                <h3 class="title">新出的游戏,大家快来看看</h3>
+                <div class="info">
+                  <div class="author">UP KEEE</div>
+                  <div class="time">2023-05-01</div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="https://t.alcy.cc/pc" alt="" />
+              <div class="color">
+                <h3 class="title">新出的游戏,大家快来看看</h3>
+                <div class="info">
+                  <div class="author">UP KEEE</div>
+                  <div class="time">2023-05-01</div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="https://t.alcy.cc/ys" alt="" />
+              <div class="color">
+                <h3 class="title">新出的游戏,大家快来看看</h3>
+                <div class="info">
+                  <div class="author">UP KEEE</div>
+                  <div class="time">2023-05-01</div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="https://t.alcy.cc/bd" alt="" />
+              <div class="color">
+                <h3 class="title">新出的游戏,大家快来看看</h3>
+                <div class="info">
+                  <div class="author">UP KEEE</div>
+                  <div class="time">2023-05-01</div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="https://t.alcy.cc/fj" alt="" />
+              <div class="color">
+                <h3 class="title">新出的游戏,大家快来看看</h3>
+                <div class="info">
+                  <div class="author">UP KEEE</div>
+                  <div class="time">2023-05-01</div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="https://t.alcy.cc/ycy" alt="" />
+              <div class="color">
+                <h3 class="title">新出的游戏,大家快来看看</h3>
+                <div class="info">
+                  <div class="author">UP KEEE</div>
+                  <div class="time">2023-05-01</div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="https://t.alcy.cc/ycy" alt="" />
+              <div class="color">
+                <h3 class="title">新出的游戏,大家快来看看</h3>
+                <div class="info">
+                  <div class="author">UP KEEE</div>
+                  <div class="time">2023-05-01</div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="https://t.alcy.cc/ycy" alt="" />
+              <div class="color">
+                <h3 class="title">新出的游戏,大家快来看看</h3>
+                <div class="info">
+                  <div class="author">UP KEEE</div>
+                  <div class="time">2023-05-01</div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="https://t.alcy.cc/ycy" alt="" />
+              <div class="color">
+                <h3 class="title">新出的游戏,大家快来看看</h3>
+                <div class="info">
+                  <div class="author">UP KEEE</div>
+                  <div class="time">2023-05-01</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const nav1 = document.querySelector(".nav1.nav-common ul");
+      const line1 = document.querySelector(".nav1.nav-common ul .line");
+      console.log(nav1);
+      nav1.addEventListener("click", function (e) {
+        e.preventDefault();
+        console.log(e.target.offsetLeft);
+
+        if (e.target.tagName === "A") {
+          nav1.querySelector(".active").classList.remove("active");
+          //获取a的offsetLeft
+          let offsetLeft = e.target.offsetLeft;
+          line1.style.transform = `translateX(${offsetLeft}px)`;
+
+          e.target.classList.add("active");
+        }
+      });
+
+      const nav2 = document.querySelector(".nav2.nav-common ul");
+      const line2 = document.querySelector(".nav2.nav-common ul .line");
+
+      nav2.addEventListener("click", function (e) {
+        e.preventDefault();
+        console.log(e.target.offsetLeft);
+
+        if (e.target.tagName === "A") {
+          nav2.querySelector(".active").classList.remove("active");
+          //获取a的offsetLeft
+          let offsetLeft = e.target.offsetLeft;
+          line2.style.transform = `translateX(${offsetLeft}px)`;
+          line2.style.width = `${e.target.offsetWidth}px`;
+
+          e.target.classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>

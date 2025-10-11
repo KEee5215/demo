@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>小兔鲜</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .wrap {
+        width: 800px;
+        height: 2000px;
+        margin: 0 auto;
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        padding-top: 100px;
+        /* 从上到下的渐变 */
+        background: linear-gradient(to bottom, #40ff2b, #1e35dd);
+      }
+
+      .wrap .box {
+        width: 500px;
+        height: 500px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .sidebar {
+        width: 100px;
+        height: 300px;
+        border-radius: 10px;
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        transform: translateX(400px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        /* background-color: rgb(180, 228, 212); */
+        transition: all 0.5s;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding: 10px;
+      }
+      .sidebar li {
+        margin: 10px 0;
+        padding: 10px;
+        background-color: rgb(11, 212, 145);
+        border-radius: 5px;
+      }
+      .sidebar a {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="box"></div>
+    </div>
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+      <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">产品</a></li>
+        <li><a href="#">关于</a></li>
+        <li><a href="#">联系</a></li>
+        <li><a href="#">帮助</a></li>
+      </ul>
+    </div>
+    <script>
+      const sidebar = document.querySelector(".sidebar");
+
+      const box = document.querySelector(".box");
+
+      window.addEventListener("scroll", () => {
+        const n = document.documentElement.scrollTop;
+        if (box.offsetTop < n) {
+          sidebar.style.opacity = "1";
+        } else {
+          sidebar.style.opacity = "0";
+        }
+      });
+    </script>
+  </body>
+</html>

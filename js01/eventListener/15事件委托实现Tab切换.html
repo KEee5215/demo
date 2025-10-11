@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tab切换</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      .tab-nav a {
+        text-decoration: none;
+        color: #000;
+        font-size: 18px;
+        transition: all 0.3s;
+        border-bottom: 2px solid transparent;
+      }
+
+      .tab-nav a.active {
+        color: rgb(164, 20, 20);
+        /* border-bottom: 2px solid rgb(164, 20, 20); */
+      }
+
+      /* .tab-nav a:hover {
+        color: rgb(164, 20, 20);
+        border-bottom: 2px solid rgb(164, 20, 20);
+      } */
+
+      .tab {
+        min-width: 300px;
+        max-width: 600px;
+        width: 75%;
+        /* height: 300px; */
+        background-color: rgb(193, 233, 220);
+        margin: 100px auto;
+      }
+      .tab-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+      }
+      .tab-nav h3 {
+        width: 120px;
+        font-size: 26px;
+        font-weight: 700;
+        color: #333;
+      }
+      .tab-nav ul {
+        display: flex;
+        gap: 15px;
+        margin-right: 10px;
+      }
+      .tab-content {
+        width: 100%;
+        height: 500px;
+      }
+      .tab-content .item {
+        width: 100%;
+        height: 100%;
+        display: none;
+      }
+      .tab-content .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .tab-content .item.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tab">
+      <div class="tab-nav">
+        <h3>专辑赏析</h3>
+        <ul>
+          <li>
+            <a class="active" href="javascript:void(0);" data-id="0">JAY</a>
+          </li>
+          <li><a href="javascript:void(0);" data-id="1">范特西</a></li>
+          <li><a href="javascript:void(0);" data-id="2">八度空间</a></li>
+          <li><a href="javascript:void(0);" data-id="3">叶惠美</a></li>
+          <li><a href="javascript:void(0);" data-id="4">七里香</a></li>
+        </ul>
+      </div>
+      <div class="tab-content">
+        <div class="item active"><img src="../image/JAY.jpg" alt="" /></div>
+        <div class="item"><img src="../image/范特西.png" alt="" /></div>
+        <div class="item"><img src="../image/八度空间.png" alt="" /></div>
+        <div class="item"><img src="../image/叶惠美.png" alt="" /></div>
+        <div class="item"><img src="../image/七里香.png" alt="" /></div>
+      </div>
+    </div>
+    <script>
+      const tab = document.querySelector(".tab");
+      const as = document.querySelectorAll(".tab-nav a");
+      const items = document.querySelectorAll(".tab-content .item");
+
+      // for (let i = 0; i < as.length; i++) {
+      //   as[i].addEventListener("mouseenter", function (e) {
+      //     e.preventDefault();
+      //     document.querySelector(".tab .active").classList.remove("active");
+      //     this.classList.add("active");
+      //     document
+      //       .querySelector(".tab-content .active")
+      //       .classList.remove("active");
+      //     items[i].classList.add("active");
+      //   });
+      // }
+
+      tab.addEventListener("click", function (e) {
+        console.log(e.target.tagName);
+        //找到当前点击的a
+        if (e.target.tagName.toLowerCase() === "a") {
+          e.preventDefault();
+          //找到并移除active
+          document.querySelector(".tab .active").classList.remove("active");
+          //给当前点击的a添加active
+          e.target.classList.add("active");
+          //   获取当前点击的a的data-id
+          const id = +e.target.dataset.id;
+          //   找到展示栏item并移除active
+          document
+            .querySelector(".tab-content .active")
+            .classList.remove("active");
+          //   找到展示栏item并添加active
+          items[id].classList.add("active");
+          // document
+          //   .querySelector(`.tab-content .item:nth-child(${id + 1})`)
+          //   .classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>

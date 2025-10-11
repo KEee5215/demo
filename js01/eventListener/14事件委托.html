@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件委托</title>
+  </head>
+  <body>
+    <ul>
+      <li>这是第一个</li>
+      <li>这是第二个</li>
+      <li>这是第三个</li>
+      <li>这是第四个</li>
+      <li>这是第五个</li>
+      <p>我不需要变色</p>
+    </ul>
+
+    <script>
+      const ul = document.querySelector("ul");
+      ul.addEventListener("click", function (e) {
+        if (e.target.tagName.toLowerCase() === "li") {
+          e.target.style.color = "red";
+        }
+      });
+    </script>
+  </body>
+</html>
