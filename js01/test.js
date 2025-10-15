@@ -1,11 +1,15 @@
-function mixArgs(a, b = 2) {
-    'use strict';
-  console.log(arguments.length);
-  console.log(arguments[0]);
-  console.log(arguments[1]);
-  a = "alpha";
-  b = "beta";
-  console.log(arguments[0]);
-  console.log(arguments[1]);
+let n = 1;
+
+function fn1() {
+  function fn2() {
+    console.log(n);
+  }
+  fn2();
 }
-mixArgs(1, 2);
+
+function fn3() {
+  let n = 3;
+  fn1();
+}
+
+fn3();
