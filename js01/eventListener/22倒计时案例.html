@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>倒计时案例</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: url("https://gykfmvjuroywaelyraez.supabase.co/storage/v1/object/public/music/25/girl1.png")
+          no-repeat center center;
+      }
+
+      /* 修改后的 CSS 样式 */
+      .box {
+        width: 300px;
+        height: 400px;
+        margin: 100px auto;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* 添加模糊背景层 */
+      .box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("https://gykfmvjuroywaelyraez.supabase.co/storage/v1/object/public/music/25/girl1.png")
+          no-repeat center center;
+        /* background-color: rgba(0, 0, 0, 0.5); */
+        background-size: cover;
+        filter: blur(5px);
+        z-index: -1;
+      }
+
+      /* 激活状态下的模糊背景 */
+      .box.active::before {
+        background-color: rgba(0, 0, 0, 0.5);
+        filter: blur(5px);
+      }
+
+      /* 确保内容元素保持清晰 */
+      .box ul,
+      .box .timeDom {
+        position: relative;
+        z-index: 1;
+      }
+
+      .box ul {
+        height: 400px;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      ul.active {
+        display: none;
+      }
+
+      li .item {
+        width: 200px;
+        height: 50px;
+        background-color: rgb(0, 0, 0);
+        opacity: 0.5;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .item:active {
+        background-color: rgb(57, 223, 204);
+      }
+
+      .over {
+        width: 200px;
+        height: 50px;
+        background-color: rgb(57, 178, 223);
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        /* display: none; */
+      }
+      .timeDom {
+        width: 300px;
+        height: 400px;
+        line-height: 400px;
+        text-align: center;
+        font-size: 40px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!--  1.给用户三个固定时间的选项,刷牙3分钟,休息10分钟,学习30分钟 -->
+    <!-- 2.用户选择时间后,开始倒计时,会有倒计时的动画效果,倒计时结束,提示用户时间结束-->
+    <div class="box">
+      <ul class="">
+        <li>
+          <div class="item" data-name="3">刷牙3分钟</div>
+        </li>
+        <li>
+          <div class="item" data-name="10">休息10分钟</div>
+        </li>
+        <li>
+          <div class="item" data-name="30">学习30分钟</div>
+        </li>
+      </ul>
+
+      <div class="timeDom"></div>
+    </div>
+
+    <script>
+      const ul = document.querySelector("ul");
+      const timeDom = document.querySelector(".timeDom");
+      ul.addEventListener("click", function (e) {
+        if (e.target.className === "item") {
+          const time = e.target.dataset.name * 60;
+          //   用户一点击按钮之后,ul直接消失,box添加active样式,然后再显示三个框来显示倒计时
+          const startTime = timeChange(time);
+          ul.classList.add("active");
+          //   console.log(time);
+          timeDom.innerHTML = `${startTime[0]}:${startTime[1]}:${startTime[2]}`;
+          countDown(time);
+        }
+      });
+      // 写一个倒计时的函数,每秒给time减一
+      let timer = 0;
+      function countDown(time) {
+        timer = setInterval(() => {
+          time--;
+          //   console.log(timeChange(time));
+          showTime(time);
+          if (time < 0) {
+            clearInterval(timer);
+            // ul.classList.remove("active");
+
+            timeDom.innerHTML = "时间到,刷新重启";
+            //播放音乐
+            var audio = new Audio(
+              "https://gykfmvjuroywaelyraez.supabase.co/storage/v1/object/public/music/25/M5000012yviJ4ckYWN.mp3"
+            );
+            audio.play();
+
+            // alert("时间到");
+          }
+        }, 1000);
+      }
+
+      // 写一个把秒转换成小时分钟秒的函数
+      function timeChange(time) {
+        let hour = Math.floor(time / 60 / 60);
+        let min = Math.floor((time / 60) % 60);
+        let sec = Math.floor(time % 60);
+        hour = hour < 10 ? "0" + hour : hour;
+        min = min < 10 ? "0" + min : min;
+        sec = sec < 10 ? "0" + sec : sec;
+        return [hour, min, sec];
+      }
+
+      //   写一个显示倒计时的函数,把数组转换成字符串,然后显示在页面上
+      function showTime(time) {
+        const [hour, min, sec] = timeChange(time);
+        timeDom.innerHTML = `${hour}:${min}:${sec}`;
+      }
+    </script>
+  </body>
+</html>
