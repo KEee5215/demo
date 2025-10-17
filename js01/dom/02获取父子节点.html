@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style></style>
+    <title>父子节点</title>
   </head>
   <body>
     <div class="dad">
@@ -14,15 +13,16 @@
       <div class="son">4</div>
       <div class="son">5</div>
     </div>
-
     <script>
-      //事件委托
       const dad = document.querySelector(".dad");
-      dad.addEventListener("click", function (e) {
-        if (e.target.className === "son") {
-          console.log(e.target.innerHTML);
-        }
-      });
+      console.log(dad.children); //伪数组,亲儿子
+
+      const son = document.querySelector(".son");
+      console.log(son.parentNode); //父节点
+
+      const son2 = document.querySelector(".son:nth-child(2)");
+      console.log(son2.previousElementSibling); //亲哥哥,兄弟节点
+      console.log(son2.nextElementSibling); //亲弟弟,兄弟节点
     </script>
   </body>
 </html>

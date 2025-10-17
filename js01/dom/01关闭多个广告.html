@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>广告</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .dad {
+        position: relative;
+        width: 400px;
+        height: 100px;
+        background-color: pink;
+        margin: 40px auto;
+      }
+      .son {
+        position: absolute;
+        right: 0;
+        width: 15px;
+        height: 15px;
+        background-color: red;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 15px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dad">
+      <div class="son">x</div>
+    </div>
+    <div class="dad">
+      <div class="son">x</div>
+    </div>
+    <div class="dad">
+      <div class="son">x</div>
+    </div>
+    <script>
+      const son = document.querySelectorAll(".son");
+      son.forEach((item) => {
+        item.addEventListener("click", function () {
+          item.parentNode.remove();
+        });
+      });
+    </script>
+  </body>
+</html>

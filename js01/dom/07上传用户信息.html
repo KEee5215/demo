@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>上传用户信息</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+
+      input[type="number"] {
+        appearance: textfield; /* 标准属性 */
+        -moz-appearance: textfield; /* Firefox */
+      }
+
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none; /* Chrome, Safari, Edge */
+        margin: 0;
+      }
+
+      input[type="number"]::-ms-clear,
+      input[type="number"]::-ms-reveal {
+        display: none; /* IE, Edge */
+      }
+      input {
+        outline: none;
+        border: 1px solid rgb(169, 167, 167);
+        border-radius: 5px;
+        height: 25px;
+        width: 80px;
+        margin: 0 5px;
+      }
+      .input li:nth-child(2) input {
+        width: 50px;
+      }
+      input:focus {
+        border: 1px solid rgb(0, 0, 0);
+      }
+      select {
+        outline: none;
+        border: 1px solid rgb(169, 167, 167);
+        border-radius: 5px;
+        width: 60px;
+        height: 25px;
+        margin: 0 5px;
+      }
+
+      button {
+        outline: none;
+        background-color: slateblue;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        padding: 3px 15px;
+        cursor: pointer;
+        font-weight: 300;
+      }
+      button:active {
+        /* background-color: rgb(0, 0, 0); */
+        opacity: 0.7;
+      }
+      p {
+        font-family: 幼圆;
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      .input {
+        width: 800px;
+        height: 150px;
+        /* background-color: pink; */
+        margin: 0 auto;
+      }
+      .input h1 {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 20px;
+      }
+
+      .input ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        /* height: 50%; */
+      }
+
+      .input li {
+        display: flex;
+      }
+
+      .list {
+        /* background-color: cadetblue; */
+        width: 800px;
+        height: 150px;
+        margin: 0 auto;
+      }
+      .list h1 {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+      .list table {
+        /* 合并边框 */
+        width: 100%;
+        margin: 0 auto;
+        border-collapse: collapse;
+
+        /* border: 1px solid rgb(0, 0, 0); */
+      }
+      th,
+      td {
+        border: 1px solid rgb(212, 209, 209);
+
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 400;
+        /* 幼圆体 */
+        font-family: 幼圆;
+      }
+
+      th {
+        background-color: #d3e5ff;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="input">
+      <h1>新增学员</h1>
+      <form class="student-form" autocomplete="off">
+        <ul>
+          <li>
+            <p>姓名:</p>
+            <input type="text" name="name" />
+          </li>
+          <li>
+            <p>年龄:</p>
+            <input type="number" name="age" />
+          </li>
+          <li>
+            <p>性别:</p>
+            <select name="gender" id="gneder">
+              <option value="男">男</option>
+              <option value="女">女</option>
+            </select>
+          </li>
+          <li>
+            <p>薪资:</p>
+            <input type="text" name="salary" />
+          </li>
+          <li>
+            <p>就业城市:</p>
+            <select name="city" id="city">
+              <option value="郑州">郑州</option>
+              <option value="濮阳">濮阳</option>
+              <option value="北京">北京</option>
+            </select>
+          </li>
+          <li><button class="submit-btn">录入</button></li>
+        </ul>
+      </form>
+    </div>
+    <div class="list">
+      <h1>就业榜</h1>
+      <!-- 表头 -->
+      <table>
+        <thead>
+          <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>薪资</th>
+            <th>就业城市</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 数据行将在这里动态添加 -->
+          <!-- <tr>
+            <td>1</td>
+            <td>张三</td>
+            <td>18</td>
+            <td>男</td>
+            <td>5000</td>
+            <td>郑州</td>
+            <td>
+              <button>删除</button>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+    <script>
+      const arr = [];
+
+      const tbody = document.querySelector("tbody");
+      const form = document.querySelector(".student-form");
+      const submitButton = document.querySelector(".submit-btn");
+      //   const deleteButton = document.querySelector(".list button");
+
+      //表单提交
+      submitButton.addEventListener("click", function (e) {
+        e.preventDefault(); // 防止表单默认提交
+
+        const formData = new FormData(form);
+        const userData = {
+          id: arr.length + 1,
+          name: formData.get("name"),
+          age: formData.get("age"),
+          gender: formData.get("gender"),
+          salary: formData.get("salary"),
+          city: formData.get("city"),
+        };
+        //判断输入是否为空
+        if (
+          !userData.name ||
+          !userData.age ||
+          !userData.gender ||
+          !userData.salary ||
+          !userData.city
+        ) {
+          alert("请填写完整信息");
+          return;
+        }
+        // 向数组中添加数据
+        arr.push(userData);
+
+        // 用数组数据,刷新页面
+        reflow(arr);
+        // 清空表单
+        form.reset();
+      });
+
+      function reflow(arr) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${arr[arr.length - 1].id}</td>
+          <td>${arr[arr.length - 1].name}</td>
+          <td>${arr[arr.length - 1].age}</td>
+          <td>${arr[arr.length - 1].gender}</td>
+          <td>${arr[arr.length - 1].salary}</td>
+          <td>${arr[arr.length - 1].city}</td>
+          <td><button>删除</button></td>`;
+        tbody.appendChild(tr);
+      }
+
+      //   根据id删除数组中的数据
+      tbody.addEventListener("click", function (e) {
+        if (e.target.tagName === "BUTTON") {
+          //事件委托
+          const id = +e.target.innerHTML;
+          arr.splice(id - 1, 1);
+          e.target.parentNode.parentNode.remove();
+        }
+      });
+    </script>
+  </body>
+</html>
