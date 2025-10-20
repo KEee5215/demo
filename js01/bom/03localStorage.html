@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>本地存储</title>
+  </head>
+  <body>
+    <script>
+      // 1. 存储数据
+      localStorage.setItem("name", "张三");
+      localStorage.setItem("age", 18);
+      localStorage.setItem("height", 1.88);
+
+      // 2. 获取数据
+      console.log(localStorage.getItem("name"));
+      console.log(localStorage.getItem("age"));
+      console.log(localStorage.getItem("height"));
+
+      // 3. 删除数据
+      localStorage.removeItem("name");
+
+      // 4. 删除所有数据
+      // localStorage.clear();
+      //   localStorage.removeItem("age");
+
+      // 5. 获取所有数据
+      console.log(localStorage.key(0));
+      console.log(localStorage.key(1));
+      console.log(localStorage.key(2));
+
+      // 6. 获取数据长度
+    </script>
+  </body>
+</html>

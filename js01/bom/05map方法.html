@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = ["red", "green", "blue"];
+      const newArray = arr.map(function (element, index, array) {
+        element = element + "1";
+        console.log(element, index, array);
+        return element;
+      });
+      console.log(newArray);
+
+      //   join 方法
+      const arr1 = ["red", "green", "blue"];
+      const newArray1 = arr.join("-");
+      console.log(newArray1);
+    </script>
+  </body>
+</html>

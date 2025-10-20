@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //对象
+      var obj = {
+        name: "张三",
+        age: 18,
+        sex: "男",
+        hobby: ["吃饭", "睡觉", "打豆豆"],
+      };
+
+      localStorage.setItem("obj", JSON.stringify(obj));
+
+      var obj1 = JSON.parse(localStorage.getItem("obj"));
+
+      console.log(obj1);
+    </script>
+  </body>
+</html>

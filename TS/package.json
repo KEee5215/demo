@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc",
+    "compile": "tsc index.ts"
+  },
+  "dependencies": {
+    "pnpm": "^10.18.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.8.1"
+  }
+}

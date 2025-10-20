@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+      }
+      body {
+        background: url(../image/叶惠美.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      h1 {
+        text-align: center;
+        padding: 20px;
+      }
+      .head {
+        width: 600px;
+        margin: 0 auto;
+        border-radius: 7px 7px 0 0;
+        padding: 10px;
+        /* background-color: white; */
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+      /* 表单对背景有模糊效果 */
+      .head {
+        backdrop-filter: blur(5px);
+        background-color: rgba(249, 247, 247, 0.4);
+      }
+
+      .head label {
+        display: block;
+      }
+      .head input {
+        width: 60px;
+        height: 20px;
+        border: 1px solid black;
+        border-radius: 7px;
+        outline: none;
+        padding: 5px;
+        margin: 0 5px;
+        background-color: #4d9e57;
+        background-size: cover;
+        color: #5f74ca;
+      }
+      button {
+        width: 50px;
+        height: 30px;
+        backdrop-filter: blur(5px);
+        background-color: rgba(36, 35, 35, 0.4);
+        color: white;
+        border: none;
+        border-radius: 7px;
+        outline: none;
+        cursor: pointer;
+      }
+      button:active {
+        opacity: 0.7;
+      }
+
+      .list {
+        width: 600px;
+        margin: 0 auto;
+        border-collapse: collapse;
+      }
+      .list thead tr {
+        background-color: rgb(98, 172, 108);
+      }
+
+      .list th,
+      td {
+        border: 1px solid black;
+        text-align: center;
+        padding: 10px;
+        font-size: 26px;
+        color: #5f74ca;
+      }
+
+      .total {
+        width: 600px;
+        height: 50px;
+        margin: 0 auto;
+        text-align: center;
+        backdrop-filter: blur(5px);
+        background-color: rgba(36, 35, 35, 0.4);
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      .total span {
+        color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>杰迷档案</h1>
+    <form class="head">
+      <label for="name">姓名<input type="text" name="name" id="name" /></label>
+      <label for="hobby"
+        >爱好<input type="text" name="hobby" id="hobby"
+      /></label>
+      <label for="song"
+        >最喜欢的歌<input
+          type="text"
+          name="song"
+          id="song"
+          style="width: fit-content"
+      /></label>
+      <button type="submit">提交</button>
+    </form>
+    <div class="total">一共有<span>0</span>数据</div>
+    <table class="list">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>姓名</th>
+          <th>爱好</th>
+          <th>最喜欢的歌</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>
+            <button>删除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      const arr = JSON.parse(localStorage.getItem("object")) || [];
+
+      const head = document.querySelector(".head");
+      const name = document.querySelector("#name");
+      const hobby = document.querySelector("#hobby");
+      const song = document.querySelector("#song");
+      const tbody = document.querySelector("tbody");
+      const tr = document.createElement("tr");
+      const total = document.querySelector(".total span");
+      head.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!name.value || !hobby.value || !song.value) {
+          return alert("请填写完整信息");
+        }
+        arr.push({
+          id: arr.length ? arr[arr.length - 1].id + 1 : 1,
+          name: name.value,
+          hobby: hobby.value,
+          song: song.value,
+        });
+
+        // 清空表单
+        head.reset();
+        // 重新渲染
+        render();
+        // 存储
+        localStorage.setItem("object", JSON.stringify(arr));
+      });
+
+      tbody.addEventListener("click", function (e) {
+        if (e.target.tagName === "BUTTON") {
+          if (confirm("确定删除吗")) {
+            const index = e.target.dataset.index;
+            arr.splice(index, 1);
+            render();
+            localStorage.setItem("object", JSON.stringify(arr));
+          }
+        }
+      });
+
+      //   const test = [
+      //     {
+      //       id: 1,
+      //       name: "柯亿",
+      //       hobby: "吉他",
+      //       song: "告白气球",
+      //     },
+      //   ];
+      //   localStorage.setItem("object", JSON.stringify(test));
+
+      function render() {
+        //利用map遍历数组,返回对应tr的数组
+        console.log(arr);
+        const newArr = arr.map(function (ele, index) {
+          return `<tr>
+                    <td>${ele.id}</td>
+                    <td>${ele.name}</td>
+                    <td>${ele.hobby}</td>
+                    <td>${ele.song}</td>
+                    <td>
+                        <button data-index="${index}">删除</button>
+                    </td>
+                </tr>`;
+        });
+        tbody.innerHTML = newArr.join("");
+        total.innerHTML = arr.length;
+      }
+      render();
+    </script>
+  </body>
+</html>
