@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      body {
+        background-color: #e6e2e2;
+      }
+
+      .container {
+        position: relative;
+        width: 800px;
+        height: 800px;
+        margin: 0 auto;
+        /* border: 1px solid red; */
+        background-color: #fff;
+        padding: 20px;
+        display: flex;
+      }
+
+      .middle {
+        width: 342px;
+        height: 342px;
+        border: 1px solid red;
+        position: relative;
+      }
+      .middle img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .small {
+        width: 72px;
+        height: 342px;
+        border: 1px solid blue;
+        /* position: absolute; */
+        top: 0;
+        left: 0;
+      }
+      .small ul li {
+        margin: 5px;
+        border: 1px solid transparent;
+      }
+      .small ul li:hover {
+        border: 1px solid rgb(153, 255, 0);
+      }
+      .small img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .big {
+        width: 342px;
+        height: 342px;
+        border: 1px solid rgb(153, 255, 0);
+        /* background-color: rgb(255, 255, 255); */
+        position: absolute;
+        top: 20px;
+        left: 362px;
+        z-index: 1;
+        overflow: hidden;
+        background: url(../image/七里香.png) no-repeat;
+        background-size: 684px 684px;
+
+        display: none;
+      }
+
+      .mask {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="big"></div>
+      <div class="middle">
+        <img src="../image/七里香.png" alt="" />
+        <div class="mask"></div>
+      </div>
+      <div class="small">
+        <ul>
+          <li><img src="../image/七里香.png" alt="" /></li>
+          <li><img src="../image/范特西.png" alt="" /></li>
+          <li><img src="../image/荒野大镖客2.webp" alt="" /></li>
+          <li><img src="../image/叶惠美.png" alt="" /></li>
+          <li><img src="../image/鸣潮.png" alt="" /></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      // 鼠标移动到small中的每个图片上，让big和middle中的图片切换src
+      const small = document.querySelector(".small");
+      const big = document.querySelector(".big");
+      //   const bigImg = document.querySelector(".big img");
+      const middleImg = document.querySelector(".middle img");
+      const middle = document.querySelector(".middle");
+      // for (let i = 0; i < smallImgs.length; i++) {
+      //   smallImgs[i].onmouseover = function () {
+      //     bigImg.src = smallImgs[i].src;
+      //     middleImg.src = smallImgs[i].src;
+      //   }
+      // }
+      //用事件委托
+      small.onmouseover = function (e) {
+        if (e.target.nodeName === "IMG") {
+          //改变背景图片url
+          big.style.backgroundImage = `url(${e.target.src})`;
+          middleImg.src = e.target.src;
+        }
+      };
+      //鼠标移入middleImg的时候，让bigImg的display变成block
+      let timer = 0;
+      function show() {
+        clearInterval(timer);
+        big.style.display = "block";
+      }
+      //鼠标移出middleImg的时候，让bigImg的display变成none
+      function hide() {
+        timer = setTimeout(function () {
+          big.style.display = "none";
+        }, 150);
+      }
+      //中盒子
+      middle.addEventListener("mouseover", show);
+      middle.addEventListener("mouseout", hide);
+      //   大盒子
+      big.addEventListener("mouseover", show);
+      big.addEventListener("mouseout", hide);
+
+      const mask = document.querySelector(".mask");
+      middle.addEventListener("mouseenter", function (e) {
+        mask.style.display = "block";
+      });
+      middle.addEventListener("mouseleave", function (e) {
+        mask.style.display = "none";
+      });
+      middle.addEventListener("mousemove", function (e) {
+        let rect = middle.getBoundingClientRect();
+        let x = e.pageX - rect.left;
+        let y = e.pageY - rect.top - document.documentElement.scrollTop;
+        if (x >= 0 && x <= 342 && y >= 0 && y <= 342) {
+          let mx = 0;
+          let my = 0;
+          if (x < 75) mx = 0;
+          if (x >= 75 && x <= 267) mx = x - 75;
+          if (x > 267) mx = 192;
+          if (y < 75) my = 0;
+          if (y >= 75 && y <= 267) my = y - 75;
+          if (y > 267) my = 192;
+          mask.style.left = mx + "px";
+          mask.style.top = my + "px";
+          //   console.log(mx, my);
+          big.style.backgroundPositionX = -mx * (342 / 192) + "px";
+          big.style.backgroundPositionY = -my * (342 / 192) + "px";
+        }
+      });
+    </script>
+  </body>
+</html>

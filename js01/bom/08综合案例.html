@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+        color: rgb(73, 186, 155);
+      }
+      body {
+        background-color: rgb(234, 231, 231);
+      }
+      .wrap {
+        width: 800px;
+        height: 800px;
+        background-color: white;
+        margin: 0 auto;
+        padding: 40px;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+      }
+      input[type="text"] {
+        width: 250px;
+        height: 45px;
+        border: 2px solid rgb(200, 205, 205);
+        border-radius: 5px;
+        outline: none;
+        padding-left: 25px;
+        font-size: 16px;
+        font-weight: 500;
+        color: rgb(53, 53, 53);
+      }
+
+      input[type="text"]:focus {
+        border: 2px solid rgb(73, 186, 155);
+      }
+
+      input[type="text"]::placeholder {
+        color: rgb(200, 205, 205);
+        font-size: 12px;
+      }
+
+      .form:last-child {
+        font-size: 12px;
+      }
+
+      button {
+        width: 250px;
+        height: 45px;
+        background-color: rgb(73, 186, 155);
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .validateCode {
+        position: relative;
+      }
+      .validateCode input {
+        padding-right: 110px;
+      }
+      .validateCode a {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 30px;
+        line-height: 30px;
+        background: none;
+        border: none;
+        color: rgb(73, 186, 155);
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .form div {
+        position: relative;
+      }
+      .form div span {
+        position: absolute;
+        left: 10px;
+        bottom: -23px;
+        /* transform: translateY(-50%); */
+        height: 30px;
+        line-height: 30px;
+        background: none;
+        border: none;
+        color: rgb(197, 92, 92);
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <form class="form">
+        <div class="username">
+          <input type="text" name="username" placeholder="设置用户名称" />
+          <span class="msg"></span>
+        </div>
+        <div class="phone">
+          <input type="text" name="phone" placeholder="输入手机号码" />
+          <span class="msg"></span>
+        </div>
+        <div class="validateCode">
+          <input type="text" name="validateCode" placeholder="短信验证码" />
+          <span class="msg"></span>
+          <a id="code" herf="javascript:;">发送验证码</a>
+        </div>
+        <div class="password">
+          <input
+            type="text"
+            name="password"
+            placeholder="设置6至20位字母、数字和符号组合"
+          />
+          <span class="msg"></span>
+        </div>
+        <div class="confirmPassword">
+          <input
+            type="text"
+            name="confirmPassword"
+            placeholder="请再次输入上面密码"
+          />
+          <span class="msg"></span>
+        </div>
+        <label for="comfirm">
+          <input type="radio" name="confirm" />已阅读并同意<a
+            href="www.baidu.com"
+            ><用户服务协议></a
+          ></label
+        >
+        <button type="submit" id="submit">下一步</button>
+      </form>
+    </div>
+    <script>
+      const dom = {
+        form: document.querySelector("form"),
+        code: document.querySelector("#code"),
+        username: document.querySelector('input[name="username"]'),
+        phone: document.querySelector('input[name="phone"]'),
+        codeValue: document.querySelector('input[name="validateCode"]'),
+        password: document.querySelector('input[name="password"]'),
+        confirmPassword: document.querySelector(
+          'input[name="confirmPassword"]'
+        ),
+        confirm: document.querySelector('input[name="confirm"]'),
+        btn: document.querySelector("#submit"),
+      };
+
+      let flag = true;
+
+      // 发送验证码
+      dom.code.addEventListener("click", function (e) {
+        e.preventDefault;
+        if (!flag) return;
+        console.log("执行力");
+        flag = false;
+        let i = 5;
+        dom.code.innerHTML = `0${i}秒后重新获取`;
+        let timer = setInterval(function () {
+          i--;
+          dom.code.innerHTML = `0${i}秒后重新获取`;
+          if (i < 0) {
+            clearInterval(timer);
+            dom.code.innerHTML = "重新发送";
+            flag = true;
+          }
+        }, 1000);
+      });
+
+      // 表单验证
+      dom.username.addEventListener("change", verifyName);
+      dom.phone.addEventListener("change", verifyPhone);
+      dom.codeValue.addEventListener("change", verifyCode);
+      dom.password.addEventListener("change", verifyPassword);
+      dom.confirmPassword.addEventListener("change", verifyConfirmPassword);
+
+      // 用户名验证
+      function verifyName() {
+        //定义用户名正则
+        let reg = /^[a-zA-Z0-9-_]{6,20}$/;
+        //不合法
+        if (!reg.test(dom.username.value)) {
+          //   console.log("用户名格式不正确");
+          dom.username.nextElementSibling.innerHTML = "用户名格式不正确";
+          return false;
+        }
+        //合法
+        dom.username.nextElementSibling.innerHTML = "";
+        return true;
+      }
+
+      // 手机号验证
+      function verifyPhone() {
+        //定义手机号正则
+        let reg = /^1[3-9]\d{9}$/;
+        //不合法
+        if (!reg.test(dom.phone.value)) {
+          //   console.log("用户名格式不正确");
+          dom.phone.nextElementSibling.innerHTML = "手机号格式不正确";
+          return false;
+        }
+        //合法
+        dom.phone.nextElementSibling.innerHTML = "";
+        return true;
+      }
+
+      // 验证码验证
+      function verifyCode() {
+        //定义手机号正则
+        let reg = /^\d{6}$/;
+        //不合法
+        if (!reg.test(dom.codeValue.value)) {
+          //   console.log("用户名格式不正确");
+          dom.codeValue.nextElementSibling.innerHTML = "验证码格式不正确";
+          return false;
+        }
+        //合法
+        dom.codeValue.nextElementSibling.innerHTML = "";
+        return true;
+      }
+
+      // 密码验证
+      function verifyPassword() {
+        //定义密码正则
+        let reg = /^[a-zA-Z0-9-_]{6,20}$/;
+        //不合法
+        if (!reg.test(dom.password.value)) {
+          //   console.log("用户名格式不正确");
+          dom.password.nextElementSibling.innerHTML = "密码格式不正确";
+          return false;
+        }
+        //合法
+        dom.password.nextElementSibling.innerHTML = "";
+        return true;
+      }
+
+      // 确认密码验证
+      function verifyConfirmPassword() {
+        //不合法
+        if (dom.confirmPassword.value !== dom.password.value) {
+          // console.log(dom.confirmPassword);
+          dom.confirmPassword.nextElementSibling.innerHTML = "两次密码不一致";
+          return false;
+        }
+        //合法
+        dom.confirmPassword.nextElementSibling.innerHTML = "";
+        return true;
+      }
+
+      // 提交表单验证
+      dom.form.addEventListener("submit", function (e) {
+        // console.log(dom.confirm);
+        if (!dom.confirm.checked) {
+          alert("请勾选协议");
+          e.preventDefault();
+        }
+        if (!verifyName()) {
+          e.preventDefault();
+        }
+        if (!verifyPhone()) {
+          e.preventDefault();
+        }
+        if (!verifyCode()) {
+          e.preventDefault();
+        }
+        if (!verifyPassword()) {
+          e.preventDefault();
+        }
+        if (!verifyConfirmPassword()) {
+          e.preventDefault();
+        }
+      });
+    </script>
+  </body>
+</html>
