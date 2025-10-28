@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>商品展示列表</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        padding: 20px;
+      }
+
+      .product-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .product-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .product-image {
+        width: 100%;
+        height: 200px;
+        background-color: #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 14px;
+      }
+
+      .product-info {
+        padding: 20px;
+      }
+
+      .product-name {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .product-price {
+        font-size: 20px;
+        color: #e74c3c;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .product-description {
+        color: #666;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="product-list">
+      <!-- 商品卡片1 -->
+      <!-- <div class="product-card">
+        <div class="product-image">商品图片</div>
+        <div class="product-info">
+          <div class="product-name">无线蓝牙耳机</div>
+          <div class="product-price">¥299.00</div>
+          <div class="product-description">
+            高品质无线蓝牙耳机，支持主动降噪，续航时间长达30小时，带来沉浸式音乐体验。
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <script>
+      //模拟商品数据
+      const products = [
+        {
+          name: "无线蓝牙耳机",
+          price: 299,
+          description:
+            "高品质无线蓝牙耳机，支持主动降噪，续航时间长达30小时，带来沉浸式音乐体验。",
+        },
+        {
+          name: "运动运动鞋",
+          price: 89,
+          description:
+            "运动运动鞋，耐磨防滑，百搭百搭， suitable for all occasions.",
+        },
+        {
+          name: "MacBook Pro",
+          price: 1999,
+          description:
+            "Apple MacBook Pro 16英寸笔记本电脑，性能 upgrades， 轻松处理office工作。",
+        },
+        {
+          name: "MacBook Air",
+          price: 1299,
+          description:
+            "Apple MacBook Air 13英寸笔记本电脑，轻薄便携， suitable for all occasions.",
+        },
+      ];
+
+      const productList = document.querySelector(".product-list");
+
+      let str = "";
+      //数组方法,把每个元素获取到
+      products.forEach(function (item) {
+        // console.log(item);
+        const { name, price, description } = item;
+        str += ` <div class="product-card">
+        <div class="product-image">商品图片</div>
+        <div class="product-info">
+          <div class="product-name">${name}</div>
+          <div class="product-price">¥${price}</div>
+          <div class="product-description">
+            ${description}
+          </div>
+        </div>
+      </div>`;
+      });
+
+      productList.innerHTML = str;
+    </script>
+  </body>
+</html>
