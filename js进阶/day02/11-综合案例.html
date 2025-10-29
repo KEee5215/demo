@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>购物车</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .total {
+        text-align: right;
+        width: 800px;
+        margin: 0 auto;
+        padding: 10px;
+        background-color: #eee;
+      }
+      .total span {
+        color: rgb(190, 36, 36);
+      }
+      .list {
+        margin: 0 auto;
+        width: 800px;
+      }
+
+      .list .item {
+        display: flex;
+        /* align-items: center; */
+        justify-content: space-between;
+        padding: 10px 10px;
+        gap: 20px;
+        height: 80px;
+      }
+
+      .list .item img {
+        /* margin: 20px; */
+        width: 100px;
+        height: 60px;
+      }
+
+      .list .item .name {
+        flex: 1;
+        /* white-space: nowrap; 防止文本换行 */
+        /* overflow: hidden; 隐藏溢出内容 */
+        /* text-overflow: ellipsis; 溢出时显示省略号 */
+      }
+
+      .list .item .price {
+        color: rgb(190, 36, 36);
+        margin-right: 30px;
+      }
+      .list .item .spec {
+        color: darkgray;
+        flex: 1;
+        font-size: 14px;
+      }
+
+      .list .item .count {
+        color: darkgray;
+        margin-right: 60px;
+        font-size: 14px;
+      }
+
+      .list .item .sub-total {
+        color: rgb(190, 36, 36);
+      }
+      .name .gifts {
+        display: block;
+        color: darkgray;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="list">
+      <!-- <div class="item">
+        <img src="../../js01/image/FC25.webp" alt="" />
+        <p class="name">
+          咖啡机咖啡机咖啡机咖啡机咖啡机咖啡机<span class="gifts">[赠品]</span>
+        </p>
+        <p class="spec">白色/10寸</p>
+        <p class="price">¥ 199.00</p>
+        <p class="count">x2</p>
+        <p class="sub-total">579.80</p>
+      </div> -->
+    </div>
+    <div class="total">合计: <span>1</span>元</div>
+
+    <script>
+      const goodsList = [
+        {
+          img: "../../js01/image/FC25.webp",
+          name: "咖啡机咖啡机咖啡机咖啡机咖啡机咖啡机",
+          spec: { color: "白色", size: "10寸" },
+          price: 199,
+          count: 2,
+        },
+        {
+          img: "../../js01/image/FC25.webp",
+          name: "新手机大家喜欢",
+          spec: { color: "白色", size: "10寸" },
+          price: 199,
+          count: 2,
+        },
+        {
+          img: "../../js01/image/FC25.webp",
+          name: "块来源 苹果 小米 一家 苹果",
+          spec: { color: "白色" },
+          price: 199,
+          count: 2,
+          gifts: "50g茶叶,清洗球",
+        },
+      ];
+
+      const list = document.querySelector(".list");
+
+      const str = goodsList
+        .map((item) => {
+          const { img, name, spec, price, count, gifts } = item;
+          // 处理赠品
+          let gift = "";
+          if (gifts) {
+            const parts = gifts.split(",");
+            gift = parts
+              .map((item) => {
+                console.log(item);
+                return `<span class="gifts">[赠品]${item}</span>`;
+              })
+              .join(" ");
+          }
+          // 处理规格
+          const specStr = Object.values(spec).join("/");
+          //   console.log(specStr);
+
+          const subTotal = price * count;
+
+          return `<div class="item">
+        <img src="${img}" alt="${name}" />
+        <p class="name">${name}${gift}</p>
+        <p class="spec">${specStr}</p>
+        <p class="price">¥${price}</p>
+        <p class="count">x${count}</p>
+        <p class="sub-total">${subTotal}元</p>
+      </div>`;
+        })
+        .join("");
+
+      list.innerHTML = str;
+
+      const total = document.querySelector(".total");
+
+      total.innerHTML = `合计: <span>${goodsList.reduce(
+        (acc, item) => acc + item.price * item.count,
+        0
+      )}</span>元`;
+    </script>
+  </body>
+</html>

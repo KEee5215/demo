@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .name {
+        width: 200px;
+      }
+      .tag {
+        display: block;
+        padding: 5px 5px;
+
+        color: rgb(79, 77, 77);
+      }
+    </style>
+  </head>
+  <body>
+    <p class="name">
+      <!-- <span class="tag">[赠品]50g茶叶</span>
+      <span class="tag">[赠品]清洗球</span> -->
+    </p>
+
+    <script>
+      const gift = "50g茶叶,清洗球";
+
+      const name = document.querySelector(".name");
+      const parts = gift.split(",");
+      //   console.log(parts);
+      const str = parts
+        .map((item) => {
+          // const span = document.createElement("span");
+          // span.className = "tag";
+          return `<span class="tag">[赠品]${item}</span>`;
+        })
+        .join("");
+      name.innerHTML = str;
+
+      //name.innerHTML = gift.split(",").map(item => `<span class="tag">[赠品]${item}</span>`).join("");
+    </script>
+  </body>
+</html>
