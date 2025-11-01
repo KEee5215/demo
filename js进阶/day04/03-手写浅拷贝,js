@@ -1,0 +1,30 @@
+const obj = {
+  name: "zhangsan",
+  age: 20,
+  hobby: ["eat", "sleep"],
+  family: {
+    son: "zhangmai",
+  },
+};
+
+function copy(newObj, oldObj) {
+  for (let k in oldObj) {
+    if (oldObj[k] instanceof Array) {
+      newObj[k] = [];
+      copy(newObj[k], oldObj[k]);
+    } else if (oldObj[k] instanceof Object) {
+      newObj[k] = {};
+      copy(newObj[k], oldObj[k]);
+    } else {
+      newObj[k] = oldObj[k];
+    }
+  }
+}
+
+const o = {};
+copy(o, obj);
+
+console.log(o);
+o.name = "keyi";
+console.log(o);
+console.log(obj);

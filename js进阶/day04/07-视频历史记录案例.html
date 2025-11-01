@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        margin: 100px auto;
+        width: 800px;
+      }
+      video {
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+  </head>
+  <body>
+    <div class="box">
+      <video src="./img/jm.mp4" controls></video>
+    </div>
+    <script>
+      //把播放进度保存到localStorage中
+      var video = document.querySelector("video");
+
+      video.addEventListener(
+        "timeupdate",
+        _.throttle(function () {
+          localStorage.setItem("time", video.currentTime);
+        }, 1000)
+      );
+
+      video.addEventListener("loadedmetadata", function () {
+        var time = localStorage.getItem("time") || 0;
+        if (time) {
+          video.currentTime = time;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      div {
+        width: 500px;
+        height: 500px;
+        background-color: rgb(153, 153, 153);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="num"></div>
+    <script>
+      let num = document.getElementById("num");
+      let count = 0;
+      function add() {
+        count++;
+        num.innerHTML = count;
+      }
+      // 防抖函数
+      function debounce(fn, delay) {
+        let timer = null;
+        return function () {
+          if (timer) {
+            clearTimeout(timer);
+            console.log("清除了计时器");
+          } //先检查有无计时器,有就清除
+          timer = setTimeout(() => {
+            //重新设置计时器
+            // fn.apply(this, arguments);
+            fn();
+          }, delay);
+        };
+      }
+      num.addEventListener("mousemove", debounce(add, 500));
+    </script>
+  </body>
+</html>
