@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .modal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0 auto;
+        width: 400px;
+        height: 200px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+      .modal .header {
+        height: 40px;
+        line-height: 40px;
+        font-size: 25px;
+        padding-left: 10px;
+        position: relative;
+      }
+      .modal .body {
+        height: 150px;
+        padding: 30px;
+        font-size: 30px;
+        text-align: center;
+      }
+      i {
+        position: absolute;
+        right: 10px;
+        top: -5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="delete">删除</button>
+    <button class="login">登录</button>
+
+    <!-- <div class="modal">
+      <div class="header">温馨提示<i>x</i></div>
+      <div class="body">您没有权限删除</div>
+    </div> -->
+
+    <script>
+      function Modal(title = "", content = "") {
+        this.modalBox = document.createElement("div");
+        this.modalBox.className = "modal";
+        this.modalBox.innerHTML = `
+        <div class="header">${title}<i>x</i></div>
+        <div class="body">${content}</div>
+        `;
+        console.log(this.modalBox);
+      }
+      //   new Modal("温馨提示", "您没有权限删除");
+
+      //给模态框添加open方法,挂载到原型对象上
+      Modal.prototype.open = function () {
+        const box = document.querySelector(".modal");
+        // if (box) {
+        //   box.remove();
+        // }
+        box && box.remove();
+        document.body.append(this.modalBox);
+        //关闭按钮要等模态框出现后再绑定事件
+        this.modalBox.querySelector("i").addEventListener("click", () => {
+          this.close();
+        });
+      };
+
+      Modal.prototype.close = function () {
+        this.modalBox.remove();
+      };
+
+      const deleteBtn = document.querySelector(".delete");
+      const loginBtn = document.querySelector(".login");
+
+      deleteBtn.addEventListener("click", function () {
+        const del = new Modal("温馨提示", "您没有权限删除");
+        del.open();
+      });
+
+      loginBtn.addEventListener("click", function () {
+        const login = new Modal("温馨提示", "请登录");
+        login.open();
+      });
+    </script>
+  </body>
+</html>
