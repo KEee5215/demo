@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2d倾斜卡片</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #8eb2f1;
+      }
+
+      .box {
+        background-color: bisque;
+        width: 200px;
+        height: 45px;
+        text-align: center;
+        line-height: 45px;
+        font-size: 24px;
+        transform: skewX(-20deg);
+        margin-bottom: 50px;
+      }
+
+      .card {
+        position: relative;
+        width: 250px;
+        height: 300px;
+        margin: 0 auto;
+      }
+      .card div {
+        transition: all 0.3s ease-in-out;
+      }
+
+      .card2 {
+        position: absolute;
+        width: 240px;
+        height: 300px;
+        background: linear-gradient(to bottom, #3a67af, #551485);
+        border-radius: 0 30px 40px 40px;
+        z-index: -1;
+        transform: skewY(8deg);
+        transform-origin: top left;
+      }
+
+      .card:hover .card2 {
+        transform: skewY(15deg);
+        width: 200px;
+      }
+
+      .card:hover .card1 {
+        transform: translateY(-10px);
+      }
+      .card1 {
+        position: absolute;
+        width: 250px;
+        height: 300px;
+        background: rgba(red, green, blue, 0.2);
+        border-radius: 0 30px 40px 40px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(30px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">选择英雄</div>
+    <div class="card">
+      <div class="card1">
+        <h1>SwiftUI</h1>
+        <p>A comprehensive series of tutorials covering Xcode,SwiftUI...</p>
+      </div>
+      <div class="card2"></div>
+    </div>
+  </body>
+</html>
