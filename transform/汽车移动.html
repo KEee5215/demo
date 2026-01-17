@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>汽车移动</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .box {
+        width: 800px;
+        height: 600px;
+        border: 1px solid #000;
+        position: relative;
+      }
+      .car { 
+        width: 300px;
+        position: absolute;
+        right: 0;
+        top: 39%;
+       transition: all 1s;
+    }
+    [class*="wheel"] { 
+        width: 40px;
+        position: absolute;
+        top: 56%;
+        transition: all 1s;
+    }
+    .wheel1 { 
+        right: 67px;
+    }
+    .wheel2 { 
+        right: 223px;
+    }
+
+    .box:hover .car{
+        transform: translateX(-400px);
+    }
+    .box:hover .wheel1 {
+        transform: translateX(-400px) rotate(-360deg);
+    }
+    .box:hover .wheel2 {
+        transform: translateX(-400px) rotate(-360deg);
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="box">
+        <img src="./img/车身.png" alt="" class="car"></img>
+        <img src="./img/车轮.png" alt="" class="wheel1"></img>
+        <img src="./img/车轮.png" alt="" class="wheel2"></img>
+    </div>
+  </body>
+</html>
