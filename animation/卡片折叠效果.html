@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>卡片折叠效果</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .box {
+        overflow: hidden;
+        margin: 100px auto;
+
+        width: 1320px;
+        height: 527px;
+        background-color: #333;
+      }
+
+      .box ul {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        grid-template-rows: 527px;
+        gap: 8px;
+        transition: all 0.7s;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      .box .item {
+        position: relative;
+      }
+
+      .box .item:nth-child(1) {
+        background: url(../小鲜兔/img/c1.webp) no-repeat 50% / cover;
+      }
+      .box .item:nth-child(2) {
+        background: url(../小鲜兔/img/c2.webp) no-repeat 50% / cover;
+      }
+      .box .item:nth-child(3) {
+        background: url(../小鲜兔/img/c3.webp) no-repeat 50% / cover;
+      }
+      .box .item:nth-child(4) {
+        background: url(../小鲜兔/img/c4.webp) no-repeat 50% / cover;
+      }
+
+      .item p {
+        position: absolute;
+        left: 0;
+        bottom: -100px;
+        color: white;
+        padding: 20px;
+      }
+
+      .item:hover p {
+        transition: all 0.7s;
+
+        bottom: 0;
+      }
+
+      .box ul:has(.item:nth-child(1):hover) {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+      }
+      .box ul:has(.item:nth-child(2):hover) {
+        grid-template-columns: 1fr 2fr 1fr 1fr;
+      }
+      .box ul:has(.item:nth-child(3):hover) {
+        grid-template-columns: 1fr 1fr 2fr 1fr;
+      }
+      .box ul:has(.item:nth-child(4):hover) {
+        grid-template-columns: 1fr 1fr 1fr 2fr;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <ul>
+        <li class="item">
+          <p>goodday</p>
+        </li>
+        <li class="item">
+          <p>goodday</p>
+        </li>
+        <li class="item">
+          <p>goodday</p>
+        </li>
+        <li class="item">
+          <p>goodday</p>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
