@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>滚动logo墙</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #ecf4ff;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      .box {
+        position: relative;
+        width: 1300px;
+        height: 500px;
+        margin: 0 auto;
+        /* border: 1px solid red; */
+        overflow: hidden;
+      }
+
+      .ad1 {
+        position: absolute;
+        width: 1300px;
+        height: 500px;
+        top: 0;
+        left: 0;
+      }
+      .ad2 {
+        position: absolute;
+        width: 1300px;
+        height: 500px;
+        top: 0px;
+        left: 1300px;
+        /* animation: move1 10s linear infinite; */
+        margin-left: 13px;
+      }
+      .scroll {
+        display: flex;
+        animation: move1 10s linear infinite;
+      }
+
+      @keyframes move1 {
+        0% {
+          transform: translateX(0px);
+        }
+        100% {
+          transform: translateX(-1313px);
+        }
+      }
+      @keyframes move2 {
+        0% {
+          left: 1300px;
+        }
+        100% {
+          left: 0;
+        }
+      }
+
+      .box:hover .scroll {
+        animation-play-state: paused;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="scroll">
+        <div class="ad1"><img src="./img/logo墙.png" alt="" /></div>
+        <div class="ad2"><img src="./img/logo墙.png" alt="" /></div>
+      </div>
+    </div>
+  </body>
+</html>

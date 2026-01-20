@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>悬浮相册</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(120deg, #2980b9, #8e44ad) no-repeat;
+      }
+
+      .box {
+        margin: 300px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .box .item {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border-radius: 15px;
+        margin: 0 2px;
+        overflow: hidden;
+        cursor: pointer;
+        /* 添加倒影效果 */
+        -webkit-box-reflect: below 1px
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0.5)
+          );
+        transition: all 0.5s ease;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .box .item:hover {
+        transform: scale(1.2);
+        z-index: 10;
+      }
+
+      .box:hover .item:not(:hover) {
+        transform: perspective(500px) scale(0.8) rotateY(45deg);
+        margin: 0 -50px;
+      }
+
+      .box .item:hover ~ .item {
+        transform: perspective(500px) scale(0.8) rotateY(-45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="item"><img src="./img/圆5.jpg" alt="" /></div>
+      <div class="item"><img src="./img/圆1.jpg" alt="" /></div>
+      <div class="item"><img src="./img/圆2.jpg" alt="" /></div>
+      <div class="item"><img src="./img/圆3.jpg" alt="" /></div>
+
+      <div class="item"><img src="./img/圆4.jpg" alt="" /></div>
+    </div>
+  </body>
+</html>
